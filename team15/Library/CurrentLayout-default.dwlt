@@ -17,7 +17,11 @@ MonoBehaviour:
     x: 179
     y: 95
     width: 1536
+<<<<<<< HEAD
     height: 821
+=======
+    height: 780.8
+>>>>>>> origin/hada
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
@@ -44,7 +48,7 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 1536
-    height: 771
+    height: 731
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
@@ -66,8 +70,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1079
     y: 0
+<<<<<<< HEAD
     width: 457
     height: 771
+=======
+    width: 460
+    height: 731
+>>>>>>> origin/hada
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
@@ -92,8 +101,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 201
     height: 361
+=======
+    width: 203
+    height: 329
+>>>>>>> origin/hada
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
@@ -117,9 +131,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 361
     width: 1079
     height: 410
+=======
+    y: 329
+    width: 1076
+    height: 402
+>>>>>>> origin/hada
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 12}
@@ -148,8 +168,13 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1536
+<<<<<<< HEAD
     height: 821
   m_MinSize: {x: 875, y: 542}
+=======
+    height: 781
+  m_MinSize: {x: 875, y: 300}
+>>>>>>> origin/hada
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -189,7 +214,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 801
+    y: 761
     width: 1536
     height: 20
   m_MinSize: {x: 0, y: 0}
@@ -213,8 +238,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1079
     height: 771
+=======
+    width: 1076
+    height: 731
+>>>>>>> origin/hada
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
@@ -238,8 +268,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1079
     height: 361
+=======
+    width: 1076
+    height: 329
+>>>>>>> origin/hada
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
@@ -261,8 +296,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 201
     y: 0
+<<<<<<< HEAD
     width: 878
     height: 361
+=======
+    width: 873
+    height: 329
+>>>>>>> origin/hada
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
@@ -291,10 +331,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 179
     y: 486
     width: 1078
     height: 389
+=======
+    x: 0
+    y: 402.4
+    width: 1075
+    height: 381
+>>>>>>> origin/hada
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -315,7 +362,11 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scenes
   m_LastFoldersGridSize: -1
+<<<<<<< HEAD
   m_LastProjectPath: "C:\\Users\\Ren Mozume\\Desktop\\15\u73ED\\team15"
+=======
+  m_LastProjectPath: C:\Users\IoriHada\Desktop\15team\team15
+>>>>>>> origin/hada
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -427,10 +478,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1258
     y: 125
     width: 456
     height: 750
+=======
+    x: 1076
+    y: 73.6
+    width: 459
+    height: 710
+>>>>>>> origin/hada
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []
@@ -465,15 +523,26 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 179
     y: 125
     width: 200
     height: 340
+=======
+    x: 0
+    y: 73.6
+    width: 202
+    height: 308
+>>>>>>> origin/hada
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 44390000
+=======
+      m_SelectedIDs: 46390000
+>>>>>>> origin/hada
       m_LastClickedID: 0
       m_ExpandedIDs: 64fbffff
       m_RenameOverlay:
@@ -498,7 +567,11 @@ MonoBehaviour:
     m_LockTracker:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
+<<<<<<< HEAD
   m_WindowGUID: c941cddb5a86037488c3a741292ca0b2
+=======
+  m_WindowGUID: 38ec347adf6e55343865680e9a27fcfe
+>>>>>>> origin/hada
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -520,10 +593,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 380
     y: 125
     width: 876
     height: 340
+=======
+    x: 203.2
+    y: 73.6
+    width: 871
+    height: 308
+>>>>>>> origin/hada
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 1f83c2bbe017d40458e003cf2988e750
