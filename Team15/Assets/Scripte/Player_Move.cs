@@ -10,6 +10,7 @@ public class Player_Move : MonoBehaviour
     public float PlayerSlowMove_Plus = -0.0025f;//0.008 低速時の移動速度
     public float PlayerSlowMove_Minus = -0.0025f;//-0.08 低速時の移動速度
     private float PlayerShotTime = 0f;//プレイヤーショットインターバル初期化
+    //テストメッセージ　
 
     // Start is called before the first frame update
     void Start()
