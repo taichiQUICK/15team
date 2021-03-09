@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player_Move : MonoBehaviour
 {
-    bool PlayerMoveStop = true;
+    bool PlayerX_ButtonStop = true; //プレイヤーのXボタンの操作の停止
+    bool PlayerMoveStop = true;//プレイヤーを一時的に止める
     bool SlowMode = false;//低速モードの有無
     bool FrontandBack = true;//表裏モードの確認
     bool ScreenLimiteR = true; bool ScreenLimiteL = true; bool ScreenLimiteU = true; bool ScreenLimiteD = true;//画面限界値
@@ -14,12 +15,15 @@ public class Player_Move : MonoBehaviour
     public float PlayerSlowMove_Minus = -0.0025f;//-0.08 低速時の移動速度
     private float PlayerShotTime = 0f;//プレイヤーショットインターバル初期化
     private float PlayerMoveStopTime = 0f;//プレイヤーが操作不能になる時間
+    private Color alpha = new Color(0, 0, 0, 0.01f);
     public float StopCoolTime = 0.5f;//表裏移動時　行動不能クールタイム　仮設定 標準0.5
-    public GameObject Back_Ground;
+    public GameObject Back_Ground; bool fadeM = true; bool fadeU = true;
+
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -99,7 +103,7 @@ public class Player_Move : MonoBehaviour
         }
 
         //移動処理はここの間まで
-        if (Input.GetKey(KeyCode.Z)&& PlayerMoveStop == true)
+        if (Input.GetKey(KeyCode.Z) && PlayerMoveStop == true)
         {//プレイヤーショット関連
             PlayerShotTime += Time.deltaTime;
             if (0.10f < PlayerShotTime)//0.10の弾幕インターバル
@@ -107,43 +111,57 @@ public class Player_Move : MonoBehaviour
                 PlayerShotTime = 0f;
                 GameObject Player_Bullet = (GameObject)Resources.Load("Player_Bullet");
                 Instantiate(Player_Bullet, this.transform.position, Quaternion.identity);
-                Debug.Log("弾生成");
+             //   Debug.Log("弾生成");
             }
         }
         //プレイヤーショット関連はこの間
         //プレイヤーがボタン操作できるギミック等
-        if (Input.GetKeyDown(KeyCode.X) && FrontandBack == true && PlayerMoveStop == true)
-        {       
+        if (Input.GetKeyDown(KeyCode.X) && FrontandBack == true && PlayerX_ButtonStop == true)
+        {
             GameObject BuleSpell = (GameObject)Resources.Load("RedSpell");
             Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
-            Back_Ground.GetComponent<Renderer>().material.color = Color.red;
+         //   Back_Ground.GetComponent<Renderer>().material.color = Color.red;
             FrontandBack = false;
             PlayerMoveStop = false;
-            Debug.Log("裏");
+            PlayerX_ButtonStop = false;
+           // Debug.Log("裏");
+
         }
-        if (Input.GetKeyDown(KeyCode.X) && FrontandBack == false && PlayerMoveStop == true)
+        if (Input.GetKeyDown(KeyCode.X) && FrontandBack == false && PlayerX_ButtonStop == true)
         {
-        
+
             GameObject BuleSpell = (GameObject)Resources.Load("BlueSpell");
             Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
-            Back_Ground.GetComponent<Renderer>().material.color = Color.white;
+           // Back_Ground.GetComponent<Renderer>().material.color = Color.white;
             PlayerMoveStop = false;
+            PlayerX_ButtonStop = false;
             FrontandBack = true;
-            Debug.Log("表");
+            //Debug.Log("表");         
         }
-        if(PlayerMoveStop == false)
+        if (PlayerMoveStop == false)
         {
             PlayerMoveStopTime += Time.deltaTime;
-            if(PlayerMoveStopTime > 0.5f)
+            if (PlayerMoveStopTime > 0.5f)
             {
                 PlayerMoveStop = true;
                 PlayerMoveStopTime = 0;
-                Debug.Log("クールタイム終わり");
+              //  Debug.Log("移動制限のクールタイム終了");
+            }
+        }
+        if (PlayerX_ButtonStop == false)
+        {
+            PlayerMoveStopTime += Time.deltaTime;
+            if (PlayerMoveStopTime > 2f)
+            {
+                PlayerX_ButtonStop = true;
+                PlayerMoveStopTime = 0;
+                Debug.Log("表裏移動のクールタイム終了");
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PlayerMoveStop = false;
+           // Debug.Log("透明化");
         }
+
     }
 }
