@@ -18,7 +18,7 @@ public class Second_Deth : MonoBehaviour
         if(DestroyTime > 1.1f)
         {
             Destroy(gameObject);
-            Debug.Log("エフェクト削除");
+
         }
     }
 }
