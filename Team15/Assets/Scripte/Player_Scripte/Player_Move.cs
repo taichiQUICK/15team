@@ -8,6 +8,7 @@ public class Player_Move : MonoBehaviour
     bool PlayerMoveStop = true;//プレイヤーを一時的に止める
     bool SlowMode = false;//低速モードの有無
     bool FrontandBack = true;//表裏モードの確認
+    bool FadeStop = true;private float ChangeTime = 0;bool FadeTriger = true; 
     bool ScreenLimiteR = true; bool ScreenLimiteL = true; bool ScreenLimiteU = true; bool ScreenLimiteD = true;//画面限界値
     public float PlayerMove_Plus = 0.01f;//仮では0.025　通常移動速度
     public float PlayerMove_Minus = -0.01f;//仮では-0.025 通常移動速度
@@ -18,7 +19,7 @@ public class Player_Move : MonoBehaviour
     private Color alpha = new Color(0, 0, 0, 0.01f);
     public float StopCoolTime = 0.5f;//表裏移動時　行動不能クールタイム　仮設定 標準0.5
     public GameObject Back_Ground; bool fadeM = true; bool fadeU = true;
-
+    public GameObject Tile;
 
     // Start is called before the first frame update
     void Start()
@@ -121,7 +122,7 @@ public class Player_Move : MonoBehaviour
             GameObject BuleSpell = (GameObject)Resources.Load("RedSpell");
             Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
          //   Back_Ground.GetComponent<Renderer>().material.color = Color.red;
-            FrontandBack = false;
+            FrontandBack = false;//フェードやXボタンでの処理の主なbool
             PlayerMoveStop = false;
             PlayerX_ButtonStop = false;
            // Debug.Log("裏");
@@ -145,23 +146,44 @@ public class Player_Move : MonoBehaviour
             {
                 PlayerMoveStop = true;
                 PlayerMoveStopTime = 0;
-              //  Debug.Log("移動制限のクールタイム終了");
             }
         }
         if (PlayerX_ButtonStop == false)
         {
+            Tile.SetActive(false);
+            // Tile.GetComponent<SpriteRenderer>().material.color = Color.white;
             PlayerMoveStopTime += Time.deltaTime;
             if (PlayerMoveStopTime > 2f)
             {
+                Tile.SetActive(true);
+               // Tile.GetComponent<SpriteRenderer>().material.color = Color.red;
                 PlayerX_ButtonStop = true;
-                PlayerMoveStopTime = 0;
-                Debug.Log("表裏移動のクールタイム終了");
+                PlayerMoveStopTime = 0;              
+                Debug.Log("切り替えできる");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        //下切り替え常時発動条件付きのboolのやつ
+        if(FrontandBack == false && FadeStop == true)
         {
-           // Debug.Log("透明化");
+            Back_Ground.GetComponent<Renderer>().material.color -= alpha;
+            ChangeTime += Time.deltaTime;
+            if(ChangeTime > 1f)
+            {
+                ChangeTime = 0f;
+                FadeTriger = false;
+                FadeStop = false;
+            }
         }
-
+        if(FrontandBack == true && FadeStop == false)
+        {
+            Back_Ground.GetComponent<Renderer>().material.color += alpha;
+            ChangeTime += Time.deltaTime;
+            if(ChangeTime > 1f)
+            {
+                ChangeTime = 0f;
+                FadeTriger = true;
+                FadeStop = true;
+            }
+        }
     }
 }

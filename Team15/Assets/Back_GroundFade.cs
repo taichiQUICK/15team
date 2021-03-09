@@ -8,7 +8,7 @@ public class Back_GroundFade : MonoBehaviour
     private float fadeSpeed = 3f;
     private float time;
     private float a_Color = 255;
-    private Color alpha = new Color(0, 0, 0, 0.003f);
+    private Color alpha = new Color(0, 0, 0, 0.001f);
     bool fadestop = true;
     private float ChangeTime = 0f;
     bool Frontandback = true;
