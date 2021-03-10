@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_Move : MonoBehaviour
 {
+    public static bool hennkann = false;
     bool PlayerX_ButtonStop = true; //プレイヤーのXボタンの操作の停止
     bool PlayerMoveStop = true;//プレイヤーを一時的に止める
     bool SlowMode = false;//低速モードの有無
@@ -24,7 +25,7 @@ public class Player_Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+     
     }
 
     // Update is called once per frame
@@ -125,7 +126,9 @@ public class Player_Move : MonoBehaviour
             FrontandBack = false;//フェードやXボタンでの処理の主なbool
             PlayerMoveStop = false;
             PlayerX_ButtonStop = false;
-           // Debug.Log("裏");
+            // Debug.Log("裏");
+
+            hennkann = true; //裏表信号
 
         }
         if (Input.GetKeyDown(KeyCode.X) && FrontandBack == false && PlayerX_ButtonStop == true)
@@ -137,7 +140,9 @@ public class Player_Move : MonoBehaviour
             PlayerMoveStop = false;
             PlayerX_ButtonStop = false;
             FrontandBack = true;
-            //Debug.Log("表");         
+           // Debug.Log("表");         
+
+            hennkann = false; // 裏表信号
         }
         if (PlayerMoveStop == false)
         {
@@ -159,7 +164,7 @@ public class Player_Move : MonoBehaviour
                // Tile.GetComponent<SpriteRenderer>().material.color = Color.red;
                 PlayerX_ButtonStop = true;
                 PlayerMoveStopTime = 0;              
-                Debug.Log("切り替えできる");
+              //  Debug.Log("切り替えできる");
             }
         }
         //下切り替え常時発動条件付きのboolのやつ

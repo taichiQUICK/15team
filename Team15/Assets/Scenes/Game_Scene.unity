@@ -943,6 +943,11 @@ PrefabInstance:
       objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3361423153047023755, guid: d4cb81700cb08a44b8ac0cb2c78d34b2,
         type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361423153047023755, guid: d4cb81700cb08a44b8ac0cb2c78d34b2,
+        type: 3}
       propertyPath: m_DrawMode
       value: 0
       objectReference: {fileID: 0}
