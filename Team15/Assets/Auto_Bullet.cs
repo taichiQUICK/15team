@@ -13,6 +13,12 @@ public class Auto_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //ハダ_Pause用、Time.timeScaleが0のとき返す
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
+
 
         var v = GetComponent<Rigidbody2D>().velocity;
         v = 0.998f * v;
