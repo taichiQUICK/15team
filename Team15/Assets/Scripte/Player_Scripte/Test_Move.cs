@@ -29,7 +29,14 @@ public class Test_Move : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {//各移動処理
+    {
+        //ハダ_Pause用、Time.timeScaleが0のとき返す
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
+
+        //各移動処理
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {//低速モード有効
             SlowMode = true;
