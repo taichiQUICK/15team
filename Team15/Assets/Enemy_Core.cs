@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Enemy_Core : MonoBehaviour
 {
     public GameObject Player;
@@ -9,6 +9,8 @@ public class Enemy_Core : MonoBehaviour
     private float AutoTime = 0f;
     bool Triger = true;
     int count = 0;
+    public Slider HpSlider;
+    
     // Start is called before the first frame update
     void Start()
     {
