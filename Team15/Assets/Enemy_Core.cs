@@ -10,16 +10,23 @@ public class Enemy_Core : MonoBehaviour
     bool Triger = true;
     int count = 0;
     public Slider HpSlider;
+
     
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("Player");
+        HpSlider.value = 1080;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ハダ_Pause用、Time.timeScaleが0のとき返す
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
         AutoTime += Time.deltaTime;
         /*if (1f < AutoTime)
          {
@@ -70,6 +77,14 @@ public class Enemy_Core : MonoBehaviour
                 GetComponent<CircleCollider2D>().enabled = true;
                 gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
             }
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player_Bullet")
+        {
+            HpSlider.value -= 1;
         }
     }
 }
