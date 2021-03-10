@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PauseScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (pauseUIInstance == null)
             {
@@ -25,6 +26,19 @@ public class PauseScript : MonoBehaviour
             {
                 Destroy(pauseUIInstance);
                 Time.timeScale = 1f;
+            }
+        }
+
+        //ポーズ中処理
+        if(Time.timeScale == 0)
+        {
+            if (Input.GetKey(KeyCode.Y))
+            {
+                Application.Quit();
+            }
+            if (Input.GetKey(KeyCode.T))
+            {
+                SceneManager.LoadScene("TItle_Scene");
             }
         }
     }
