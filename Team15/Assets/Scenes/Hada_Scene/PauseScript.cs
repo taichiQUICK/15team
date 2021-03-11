@@ -11,6 +11,11 @@ public class PauseScript : MonoBehaviour
     //　ポーズUIのインスタンス
     private GameObject pauseUIInstance;
 
+    void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +35,7 @@ public class PauseScript : MonoBehaviour
         }
 
         //ポーズ中処理
-        if(Time.timeScale == 0)
+        if (Time.timeScale == 0)
         {
             if (Input.GetKey(KeyCode.Y))
             {
@@ -41,5 +46,10 @@ public class PauseScript : MonoBehaviour
                 SceneManager.LoadScene("TItle_Scene");
             }
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Time.timeScale = 1f;
     }
 }
