@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Enemy_Core : MonoBehaviour
 {
@@ -113,6 +114,13 @@ public class Enemy_Core : MonoBehaviour
 
             }
         }
+
+        //死亡処理
+        if (HpSlider.value == 0)
+        {
+            SceneManager.LoadScene("Gameover");
+        }
+
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

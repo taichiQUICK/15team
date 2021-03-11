@@ -22,6 +22,10 @@ public class TitleUI : MonoBehaviour
         {
             SceneManager.LoadScene("Game_Scene");
         }
+        if (Input.GetKey(KeyCode.T))
+        {
+            SceneManager.LoadScene("Title_Scene");
+        }
 
     }
 }
