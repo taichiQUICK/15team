@@ -183,10 +183,11 @@ public class Player_Move : MonoBehaviour
         //下切り替え常時発動条件付きのboolのやつ
         if(FrontandBack == false && FadeStop == true)
         {
-            Back_Ground.GetComponent<Renderer>().material.color -= alpha;
+            Back_Ground.GetComponent<SpriteRenderer>().material.color -= alpha;
             ChangeTime += Time.deltaTime;
             if(ChangeTime > 1f)
             {
+                
                 ChangeTime = 0f;
                 FadeTriger = false;
                 FadeStop = false;
@@ -194,10 +195,11 @@ public class Player_Move : MonoBehaviour
         }
         if(FrontandBack == true && FadeStop == false)
         {
-            Back_Ground.GetComponent<Renderer>().material.color += alpha;
+            Back_Ground.GetComponent<SpriteRenderer>().material.color += alpha;
             ChangeTime += Time.deltaTime;
             if(ChangeTime > 1f)
             {
+               
                 ChangeTime = 0f;
                 FadeTriger = true;
                 FadeStop = true;
