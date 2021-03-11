@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Player_Move : MonoBehaviour
 {
-    public static bool hennkann = false;
+    public static bool hennkann = false;//世界の表がfalse 裏がtrue
+    public static bool uragaseikika = true;
     bool PlayerX_ButtonStop = true; //プレイヤーのXボタンの操作の停止
     bool PlayerMoveStop = true;//プレイヤーを一時的に止める
     bool SlowMode = false;//低速モードの有無
@@ -142,7 +143,7 @@ public class Player_Move : MonoBehaviour
             // Debug.Log("裏");
 
             hennkann = true; //裏表信号
-
+            uragaseikika = false;
         }
         if (Input.GetKeyDown(KeyCode.X) && FrontandBack == false && PlayerX_ButtonStop == true)
         {
@@ -156,6 +157,7 @@ public class Player_Move : MonoBehaviour
            // Debug.Log("表");         
 
             hennkann = false; // 裏表信号
+            uragaseikika = true;
         }
         if (PlayerMoveStop == false)
         {
