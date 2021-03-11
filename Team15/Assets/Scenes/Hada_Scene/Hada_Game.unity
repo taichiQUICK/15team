@@ -142,6 +142,7 @@ MonoBehaviour:
   Player: {fileID: 1384201202}
   EnemyBullet_Type_1: {fileID: 7846406279542752717, guid: 8fb094fdbaf6b7341af1c7cab860572e,
     type: 3}
+  HpSlider: {fileID: 0}
 --- !u!50 &134649455
 Rigidbody2D:
   serializedVersion: 4
