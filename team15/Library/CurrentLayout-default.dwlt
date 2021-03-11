@@ -349,9 +349,15 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 823f0000
     m_LastClickedID: 16258
     m_ExpandedIDs: 00000000823f000000ca9a3b
+=======
+    m_SelectedIDs: a23a0000
+    m_LastClickedID: 15010
+    m_ExpandedIDs: 00000000a23a000000ca9a3b
+>>>>>>> origin/hada
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -472,7 +478,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 100
+  m_LastVerticalScrollValue: 0
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52

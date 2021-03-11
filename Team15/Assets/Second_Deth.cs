@@ -14,11 +14,6 @@ public class Second_Deth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ハダ_Pause用、Time.timeScaleが0のとき返す
-        if (Mathf.Approximately(Time.timeScale, 0f))
-        {
-            return;
-        }
 
         DestroyTime += Time.deltaTime;
         if(DestroyTime > 1.1f)
