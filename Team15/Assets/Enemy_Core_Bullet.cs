@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_Core_Bullet : MonoBehaviour
 {
-    public GameObject EnemyBullet_Type_2;
+    public GameObject EnemyBullet_Type_3;
     float baramakicount = 0;
     float baramakikannkakuTIme = 0;
     bool baramakiteisi = true;
@@ -32,7 +32,7 @@ public class Enemy_Core_Bullet : MonoBehaviour
                 vec = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)) * vec;
                 vec *= ShotSpeed;
                 var q = Quaternion.Euler(0, 0, -Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg);
-                var t = Instantiate(EnemyBullet_Type_2, transform.position, q);
+                var t = Instantiate(EnemyBullet_Type_3, transform.position, q);
                 t.GetComponent<Rigidbody2D>().velocity = vec;
             }
 
