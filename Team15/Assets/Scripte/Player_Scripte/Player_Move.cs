@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player_Move : MonoBehaviour
 {
@@ -22,10 +24,10 @@ public class Player_Move : MonoBehaviour
     public GameObject Back_Ground; bool fadeM = true; bool fadeU = true;
     public GameObject Tile;
 
+
     // Start is called before the first frame update
     void Start()
     {
-     
     }
 
     // Update is called once per frame
@@ -202,4 +204,13 @@ public class Player_Move : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            GameObject.Find("PlayerHP").GetComponent<PlayerHP>().AddScore();
+        }
+    }
+
 }

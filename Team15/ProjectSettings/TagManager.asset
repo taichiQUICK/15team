@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Player_Bullet
   - URA_Player_Bullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
