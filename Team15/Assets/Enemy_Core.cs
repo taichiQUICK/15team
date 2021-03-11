@@ -6,6 +6,7 @@ public class Enemy_Core : MonoBehaviour
 {
     public GameObject Player;
     public GameObject EnemyBullet_Type_1;
+    public GameObject EnemyBullet_Type_2;
     private float AutoTime = 0f;
     bool Triger = true;
     int count = 0;
@@ -39,10 +40,10 @@ public class Enemy_Core : MonoBehaviour
              vec *= ShotSpeed;
              t.GetComponent<Rigidbody2D>().velocity = vec;　
          }*/
-        if (0.5f < AutoTime)
+        if (1.0f < AutoTime && Player_Move.hennkann == false)
         {
             for (int i = 0; i < 24; i++)
-            {
+            {//表面等角攻撃
                 AutoTime = 0f;
                 float ShotSpeed = 5.5f;
                 Vector2 vec = Player.transform.position - transform.position;
@@ -54,7 +55,21 @@ public class Enemy_Core : MonoBehaviour
             }
             count++;
         }
-
+        if (0.5f < AutoTime && Player_Move.hennkann == true)
+        {
+            for (int i = 0; i < 24; i++)
+            {//裏面等角攻撃
+                AutoTime = 0f;
+                float ShotSpeed = 5.5f;
+                Vector2 vec = Player.transform.position - transform.position;
+                vec.Normalize();
+                vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
+                vec *= ShotSpeed;
+                var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+            }
+            count++;
+        }
         {
           //  if (Input.GetKeyDown(KeyCode.G))
             {
@@ -62,8 +77,9 @@ public class Enemy_Core : MonoBehaviour
                 {
                     Debug.Log("裏になった");
                     Triger = false;
-                    GetComponent<CircleCollider2D>().enabled = false;
-                    gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 100);
+                 //   GetComponent<CircleCollider2D>().enabled = false;当たり判定
+                    // gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 100);
+                    gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 255);
                 }
             }
         }
@@ -74,8 +90,9 @@ public class Enemy_Core : MonoBehaviour
             {
                  Debug.Log("表になった");
                 Triger = true;
-                GetComponent<CircleCollider2D>().enabled = true;
-                gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
+              //  GetComponent<CircleCollider2D>().enabled = true;//当たり判定
+                 gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
+              
             }
         }
 
@@ -85,6 +102,10 @@ public class Enemy_Core : MonoBehaviour
         if (collision.gameObject.tag == "Player_Bullet")
         {
             HpSlider.value -= 1;
+        }
+        if (collision.gameObject.tag == "URA_Player_Bullet")
+        {
+            HpSlider.value -= 2;
         }
     }
 }

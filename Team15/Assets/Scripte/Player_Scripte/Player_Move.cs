@@ -105,7 +105,7 @@ public class Player_Move : MonoBehaviour
         }
 
         //移動処理はここの間まで
-        if (Input.GetKey(KeyCode.Z) && PlayerMoveStop == true)
+        if (Input.GetKey(KeyCode.Z) && PlayerMoveStop == true && hennkann == false)
         {//プレイヤーショット関連
             PlayerShotTime += Time.deltaTime;
             if (0.10f < PlayerShotTime)//0.10の弾幕インターバル
@@ -114,6 +114,17 @@ public class Player_Move : MonoBehaviour
                 GameObject Player_Bullet = (GameObject)Resources.Load("Player_Bullet");
                 Instantiate(Player_Bullet, this.transform.position, Quaternion.identity);
              //   Debug.Log("弾生成");
+            }
+        }
+        if (Input.GetKey(KeyCode.Z) && PlayerMoveStop == true && hennkann == true)
+        {//プレイヤーショット関連
+            PlayerShotTime += Time.deltaTime;
+            if (0.10f < PlayerShotTime)//0.10の弾幕インターバル
+            {
+                PlayerShotTime = 0f;
+                GameObject URA_Player_Bullet = (GameObject)Resources.Load("URA_Player_Bullet");
+                Instantiate(URA_Player_Bullet, this.transform.position, Quaternion.identity);
+                //   Debug.Log("弾生成");
             }
         }
         //プレイヤーショット関連はこの間
