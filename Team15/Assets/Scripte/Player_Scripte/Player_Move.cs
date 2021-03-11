@@ -203,6 +203,8 @@ public class Player_Move : MonoBehaviour
                 FadeStop = true;
             }
         }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
