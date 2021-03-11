@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2444529768675888700}
   - component: {fileID: -2985632660065213424}
   m_Layer: 0
-  m_Name: MniMum 1
-  m_TagString: Untagged
+  m_Name: MniMum_bule
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
