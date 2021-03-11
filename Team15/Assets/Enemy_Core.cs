@@ -73,19 +73,9 @@ public class Enemy_Core : MonoBehaviour
             }
             count++;
         }
-        if (Input.GetKey(KeyCode.G))
+        if (HpSlider.value < 1000 && HpSwith900 == true)
         {
-            float ShotSpeed = 6;
-            Vector2 vec = new Vector2(0.0f, 1.0f);
-            vec = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)) * vec;
-            vec *= ShotSpeed;
-            var q = Quaternion.Euler(0, 0, -Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg);
-            var t = Instantiate(EnemyBullet_Type_2, transform.position, q);
-            t.GetComponent<Rigidbody2D>().velocity = vec;
-        }
-        if (HpSlider.value < 1050 && HpSwith900 == true)
-        {
-            Debug.Log("950切り");
+            Debug.Log("1000HP");
             baramakikougeki = true;
             HpSwith900 = false;
         }

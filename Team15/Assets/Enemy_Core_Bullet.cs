@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy_Core_Bullet : MonoBehaviour
 {
     public GameObject EnemyBullet_Type_2;
+    float baramakicount = 0;
+    float baramakikannkakuTIme = 0;
+    bool baramakiteisi = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,22 +21,28 @@ public class Enemy_Core_Bullet : MonoBehaviour
         {
             return;
         }
-        if (Enemy_Core.baramakikougeki == true)
+        if (Enemy_Core.baramakikougeki == true && baramakiteisi == true)
         {
-            // float Baramaki5count = 0;
-            // Baramaki5count += Time.deltaTime;
-            // Baramaki5count = 0f;
+            baramakicount += Time.deltaTime;
+            baramakikannkakuTIme += Time.deltaTime;
+            if (baramakikannkakuTIme > 0.3f)
+            {
+                float ShotSpeed = 6;
+                Vector2 vec = new Vector2(0.0f, 1.0f);
+                vec = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)) * vec;
+                vec *= ShotSpeed;
+                var q = Quaternion.Euler(0, 0, -Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg);
+                var t = Instantiate(EnemyBullet_Type_2, transform.position, q);
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+            }
 
-            float ShotSpeed = 6;
-            Vector2 vec = new Vector2(0.0f, 1.0f);
-            vec = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)) * vec;
-            vec *= ShotSpeed;
-            var q = Quaternion.Euler(0, 0, -Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg);
-            var t = Instantiate(EnemyBullet_Type_2, transform.position, q);
-            t.GetComponent<Rigidbody2D>().velocity = vec;
-          //  Enemy_Core.baramakikougeki = false;
-                Debug.Log("ばらまき");         
         }
-        
+        if (baramakicount > 3f)
+        {
+            Debug.Log("ばらまきていし");
+            baramakiteisi = false;
+            baramakicount = 0;
+        }
+
     }
 }

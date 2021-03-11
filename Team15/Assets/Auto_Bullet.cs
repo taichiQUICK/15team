@@ -25,7 +25,6 @@ public class Auto_Bullet : MonoBehaviour
         if (v.magnitude < 0.5f)
         {
             v = v.normalized * 0.5f;
-            Debug.Log("最低毒度");
 
         }
         GetComponent<Rigidbody2D>().velocity = v;
