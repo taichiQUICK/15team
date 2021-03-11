@@ -88,9 +88,13 @@ public class Enemy_Core : MonoBehaviour
             Debug.Log("950切り");
             baramakikougeki = true;
             HpSwith900 = false;
-            
         }
-
+        if (1051 < HpSlider.value)
+        {
+         
+            baramakikougeki = false;
+     
+        }
 
 
 
