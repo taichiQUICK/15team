@@ -14,6 +14,7 @@ public class PauseScript : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
