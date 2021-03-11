@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Enemy_Core : MonoBehaviour
 {
+    public static bool baramakikougeki = false;
     public GameObject Player;
     public GameObject EnemyBullet_Type_1;
-    public GameObject EnemyBullet_Type_2;
+    public  GameObject EnemyBullet_Type_2;
     private float AutoTime = 0f;
     bool Triger = true;
+    bool HpSwith900 = true;//ばらまきだん発生条件
     int count = 0;
     public Slider HpSlider;
 
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,29 +73,50 @@ public class Enemy_Core : MonoBehaviour
             }
             count++;
         }
+        if (Input.GetKey(KeyCode.G))
         {
-          //  if (Input.GetKeyDown(KeyCode.G))
+            float ShotSpeed = 6;
+            Vector2 vec = new Vector2(0.0f, 1.0f);
+            vec = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)) * vec;
+            vec *= ShotSpeed;
+            var q = Quaternion.Euler(0, 0, -Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg);
+            var t = Instantiate(EnemyBullet_Type_2, transform.position, q);
+            t.GetComponent<Rigidbody2D>().velocity = vec;
+        }
+        if (HpSlider.value < 1050 && HpSwith900 == true)
+        {
+            Debug.Log("950切り");
+            baramakikougeki = true;
+            HpSwith900 = false;
+            
+        }
+
+
+
+
+        {
+            //  if (Input.GetKeyDown(KeyCode.G))
             {
                 if (Player_Move.hennkann == true && Triger == true)
                 {
-                    Debug.Log("裏になった");
+                   // Debug.Log("裏になった");
                     Triger = false;
-                 //   GetComponent<CircleCollider2D>().enabled = false;当たり判定
+                    //   GetComponent<CircleCollider2D>().enabled = false;当たり判定
                     // gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 100);
                     gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 255);
                 }
             }
         }
-      //  if (Input.GetKeyDown(KeyCode.H))
+        //  if (Input.GetKeyDown(KeyCode.H))
         {
 
             if (Player_Move.hennkann == false && Triger == false)
             {
-                 Debug.Log("表になった");
+              //  Debug.Log("表になった");
                 Triger = true;
-              //  GetComponent<CircleCollider2D>().enabled = true;//当たり判定
-                 gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
-              
+                //  GetComponent<CircleCollider2D>().enabled = true;//当たり判定
+                gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
+
             }
         }
 
