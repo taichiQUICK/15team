@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class Player_Move : MonoBehaviour
 {
     public static bool hennkann = false;//世界の表がfalse 裏がtrue
@@ -24,7 +23,8 @@ public class Player_Move : MonoBehaviour
     public float StopCoolTime = 0.5f;//表裏移動時　行動不能クールタイム　仮設定 標準0.5
     public GameObject Back_Ground; bool fadeM = true; bool fadeU = true;
     public GameObject Tile;
-
+    //クールタイム表示用
+    public Text JigennidouUI;
 
     // Start is called before the first frame update
     void Start()
@@ -208,7 +208,8 @@ public class Player_Move : MonoBehaviour
             }
         }
 
-
+        //クールタイム表示（できてない）
+        JigennidouUI.text = PlayerMoveStopTime.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

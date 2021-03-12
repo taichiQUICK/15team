@@ -12,7 +12,7 @@ public class PlayerHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.textComponent = GameObject.Find("Text").GetComponent<Text>();
+        this.textComponent = GameObject.Find("PlayerHPText").GetComponent<Text>();
         this.textComponent.text = "× " + hp.ToString();
     }
 
