@@ -228,7 +228,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6525814663909770788, guid: 7952b429b790bc74d8a003af8c7e9c7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7952b429b790bc74d8a003af8c7e9c7a, type: 3}
 --- !u!1 &85685804 stripped
 GameObject:
@@ -254,20 +255,6 @@ MonoBehaviour:
   EnemyBullet_Type_2: {fileID: 7846406279542752717, guid: 20b3f8ed6ac881144bab150204b3efba,
     type: 3}
   HpSlider: {fileID: 1629047043}
---- !u!114 &85685810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85685804}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c487812a190ee45a0920e0e7eb1ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyBullet_Type_3: {fileID: 7846406279542752717, guid: 6d0e93a618b42344dab3f84debfe811b,
-    type: 3}
 --- !u!114 &85685812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +358,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8acbb456e4607ca4da89b58d9e0ed8ce, type: 3}
+--- !u!1 &219619448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 219619450}
+  - component: {fileID: 219619449}
+  m_Layer: 0
+  m_Name: baria
+  m_TagString: Wall
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!70 &219619449
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219619448}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 3, y: 1}
+  m_Direction: 0
+--- !u!4 &219619450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219619448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.73, y: -2.54, z: -3.866517}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248157823
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +819,7 @@ GameObject:
   - component: {fileID: 792611749}
   - component: {fileID: 792611748}
   m_Layer: 0
-  m_Name: Player_1
+  m_Name: ZANKI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2150,21 +2184,9 @@ MonoBehaviour:
     type: 3}
   EnemyBullet_Type_2: {fileID: 7846406279542752717, guid: 20b3f8ed6ac881144bab150204b3efba,
     type: 3}
-  HpSlider: {fileID: 1629047043}
---- !u!114 &2119128622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119128619}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81ce13e62239f84189d9987daa39286, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   EnemyBullet_Type_3: {fileID: 7846406279542752717, guid: 6d0e93a618b42344dab3f84debfe811b,
     type: 3}
+  HpSlider: {fileID: 1629047043}
 --- !u!1 &2141242151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,7 +2529,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6525814663909770788, guid: 7952b429b790bc74d8a003af8c7e9c7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7952b429b790bc74d8a003af8c7e9c7a, type: 3}
 --- !u!1001 &6642663761510834737
 PrefabInstance:

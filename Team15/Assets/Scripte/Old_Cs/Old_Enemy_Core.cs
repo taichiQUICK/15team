@@ -32,6 +32,7 @@ public class Old_Enemy_Core : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         HpSlider.value = 1080;
+        Player_Move.hennkann = false;
     }
 
     // Update is called once per frame
@@ -50,12 +51,12 @@ public class Old_Enemy_Core : MonoBehaviour
         {
             LevelOne = true;
             Debug.Log("ボス始動　攻撃開始　Level1");
-            if (1.5f < AutoTime && Player_Move.hennkann == false && Stels == false && LevelOne == true)
+            if (1.0f < AutoTime && Player_Move.hennkann == false && Stels == false && LevelOne == true)
             {
                 for (int i = 0; i < 8; i++)
                 {//表面等角攻撃
                     AutoTime = 0f;
-                    float ShotSpeed = 8;
+                    float ShotSpeed = 5;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
                     vec = Quaternion.Euler(0, 0, (360 / 8) * i) * vec;
@@ -71,12 +72,12 @@ public class Old_Enemy_Core : MonoBehaviour
             LevelOneTriger = false;
             LevelTwo = true;
            // Debug.Log("ボスレベル上昇　Level2");
-            if (1.5f < AutoTime && Player_Move.hennkann == false && Stels == false && LevelTwo == true)
+            if (1 < AutoTime && Player_Move.hennkann == false && Stels == false && LevelTwo == true)
             {
                 for (int i = 0; i < 12; i++)
                 {//表面等角攻撃
                     AutoTime = 0f;
-                    float ShotSpeed = 8;
+                    float ShotSpeed = 5;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
                     vec = Quaternion.Euler(0, 0, (360 / 12) * i) * vec;
@@ -92,12 +93,12 @@ public class Old_Enemy_Core : MonoBehaviour
             LevelTwoTriger = false;
             Lv3rd = true;
             //Debug.Log("ボスレベル上昇　Level3");
-            if (1.3f < AutoTime && Player_Move.hennkann == false && Stels == false && Lv3rd == true)
+            if (0.8 < AutoTime && Player_Move.hennkann == false && Stels == false && Lv3rd == true)
             {
                 for (int i = 0; i < 16; i++)
                 {//表面等角攻撃
                     AutoTime = 0f;
-                    float ShotSpeed = 8;
+                    float ShotSpeed = 5;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
                     vec = Quaternion.Euler(0, 0, (360 / 16) * i) * vec;
@@ -113,12 +114,12 @@ public class Old_Enemy_Core : MonoBehaviour
             Lv3rdTr = false;
             Lv4rd = true;
            // Debug.Log("ボスレベル上昇　Level4");
-            if (1.0f < AutoTime && Player_Move.hennkann == false && Stels == false && Lv4rd == true)
+            if (0.5f < AutoTime && Player_Move.hennkann == false && Stels == false && Lv4rd == true)
             {
                 for (int i = 0; i < 20; i++)
                 {//表面等角攻撃
                     AutoTime = 0f;
-                    float ShotSpeed = 8;
+                    float ShotSpeed = 4;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
                     vec = Quaternion.Euler(0, 0, (360 / 20) * i) * vec;
@@ -134,12 +135,12 @@ public class Old_Enemy_Core : MonoBehaviour
             Lv4rdTr = false;
             Lv5rd = true;
            // Debug.Log("ボスレベル上昇　Level5");
-            if (0.8f < AutoTime && Player_Move.hennkann == false && Stels == false && Lv5rd == true)
+            if (0.5 < AutoTime && Player_Move.hennkann == false && Stels == false && Lv5rd == true)
             {
                 for (int i = 0; i < 24; i++)
                 {//表面等角攻撃
                     AutoTime = 0f;
-                    float ShotSpeed = 8;
+                    float ShotSpeed = 6;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
                     vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
@@ -184,7 +185,7 @@ public class Old_Enemy_Core : MonoBehaviour
                     float ShotSpeed = 8;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
-                    vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
+                    vec = Quaternion.Euler(0, 0, (360 / 36) * i) * vec;
                     vec *= ShotSpeed;
                     var t = Instantiate(EnemyBullet_Type_1, transform.position, EnemyBullet_Type_1.transform.rotation);
                     t.GetComponent<Rigidbody2D>().velocity = vec;
@@ -297,11 +298,11 @@ public class Old_Enemy_Core : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player_Bullet")
         {
-            HpSlider.value -= 1;
+            HpSlider.value -= 1f;
         }
         if (collision.gameObject.tag == "URA_Player_Bullet")
         {
-            HpSlider.value -= 2;
+            HpSlider.value -= 2f;
         }
     }
 }
