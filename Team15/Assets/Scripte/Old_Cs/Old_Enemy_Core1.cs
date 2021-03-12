@@ -15,6 +15,14 @@ public class Old_Enemy_Core1 : MonoBehaviour
     bool Stels = false; //  こいつは最初からステルス　false  trueで裏で実体化
     int count = 0;
     public Slider HpSlider;
+    bool LevelOne = false; bool LevelOneTriger = true;
+    bool LevelTwo = false; bool LevelTwoTriger = true;
+    bool Lv3rd = false; bool Lv3rdTr = true;
+    bool Lv4rd = false; bool Lv4rdTr = true;
+    bool Lv5rd = false; bool Lv5rdTr = true;
+    bool Lv6rd = false; bool Lv6rdTr = true;
+    bool Lv7rd = false; bool Lv7rdTr = true;
+    float GameTime = 0;
 
 
 
@@ -33,49 +41,74 @@ public class Old_Enemy_Core1 : MonoBehaviour
         {
             return;
         }
+        if (Player_Move.hennkann == true)
+        {
+            GameTime += Time.deltaTime;
+        }
         AutoTime += Time.deltaTime;
-        /*if (1f < AutoTime)
-         {
-             AutoTime = 0f;
-             float ShotSpeed = 5.5f;//弾速初速
-             var pos = this.gameObject.transform.position;
-             var t = Instantiate(EnemyBullet_Type_1,this.transform.position,Quaternion.identity) as GameObject;
-             Vector2 vec = Player.transform.position - pos;
-             vec.Normalize();
-             vec *= ShotSpeed;
-             t.GetComponent<Rigidbody2D>().velocity = vec;　
-         }*/
-        if (1.0f < AutoTime && Player_Move.hennkann == false && Stels == true)
+        if (GameTime >= 1f && LevelOneTriger == true)
         {
-            for (int i = 0; i < 24; i++)
-            {//表面等角攻撃
-                AutoTime = 0f;
-                float ShotSpeed = 5.5f;
-                Vector2 vec = Player.transform.position - transform.position;
-                vec.Normalize();
-                vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
-                vec *= ShotSpeed;
-                var t = Instantiate(EnemyBullet_Type_1, transform.position, EnemyBullet_Type_1.transform.rotation);
-                t.GetComponent<Rigidbody2D>().velocity = vec;
+            LevelOne = true;
+            if (1.0f < AutoTime && Player_Move.hennkann == true && Stels == true && LevelOne == true)
+            {
+                for (int i = 0; i < 12; i++)
+                {//裏面等角攻撃
+                    AutoTime = 0f;
+                    float ShotSpeed = 5.5f;
+                    Vector2 vec = Player.transform.position - transform.position;
+                    vec.Normalize();
+                    vec = Quaternion.Euler(0, 0, (360 / 12) * i) * vec;
+                    vec *= ShotSpeed;
+                    var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                }
+                count++;
             }
-            count++;
         }
-        if (0.5f < AutoTime && Player_Move.hennkann == true && Stels == true)
+        if (GameTime >= 5f && LevelTwoTriger == true)
         {
-            for (int i = 0; i < 24; i++)
-            {//裏面等角攻撃
-                AutoTime = 0f;
-                float ShotSpeed = 5.5f;
-                Vector2 vec = Player.transform.position - transform.position;
-                vec.Normalize();
-                vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
-                vec *= ShotSpeed;
-                var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
-                t.GetComponent<Rigidbody2D>().velocity = vec;
+            LevelOneTriger = false;
+            LevelTwo = true;
+            if (1.0f < AutoTime && LevelTwo == true)
+            {
+                for (int i = 0; i < 16; i++)
+                {//裏面等角攻撃                      
+                    AutoTime = 0f;
+                    float ShotSpeed = 5.5f;
+                    Vector2 vec = Player.transform.position - transform.position;
+                    vec.Normalize();
+                    vec = Quaternion.Euler(0, 0, (360 / 16) * i) * vec;
+                    vec *= ShotSpeed;
+                    var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                }
+                count++;
             }
-            count++;
         }
-        if (HpSlider.value < 1000 && HpSwith900 == true)
+        if (GameTime >= 8f && Lv3rdTr == true)
+        {
+            LevelTwoTriger = false;
+            Lv3rd = true;
+            if (0.5f < AutoTime && Player_Move.hennkann == true && Stels == true && Lv3rd == true)
+            {
+                for (int i = 0; i < 24; i++)
+                {//裏面等角攻撃
+                    AutoTime = 0f;
+                    float ShotSpeed = 3;
+                    Vector2 vec = Player.transform.position - transform.position;
+                    vec.Normalize();
+                    vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
+                    vec *= ShotSpeed;
+                    var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                }
+                count++;
+            }
+        }
+
+
+
+      /* if (HpSlider.value < 1000 && HpSwith900 == true)
         {
             Debug.Log("1000HP");
             baramakikougeki = true;
@@ -86,7 +119,7 @@ public class Old_Enemy_Core1 : MonoBehaviour
 
             baramakikougeki = false;
 
-        }
+        }*/
 
 
 
@@ -99,7 +132,7 @@ public class Old_Enemy_Core1 : MonoBehaviour
                     // 実体化　裏でね
                     Triger = true;
                     GetComponent<CircleCollider2D>().enabled = true;//当たり判定
-                    // gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 100);
+                                                                    // gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 100);
                     gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 255);
 
                 }
@@ -112,7 +145,7 @@ public class Old_Enemy_Core1 : MonoBehaviour
             {
                 Stels = false;
                 //  Debug.Log("表になった");
-                Triger =false;
+                Triger = false;
                 GetComponent<CircleCollider2D>().enabled = false;//当たり判定
                 gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 100);
 

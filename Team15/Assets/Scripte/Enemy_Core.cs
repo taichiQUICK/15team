@@ -22,9 +22,9 @@ public class Enemy_Core : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         HpSlider.value = 1080;
-        Triger = true;
+        Player_Move.hennkann = false;
         //  GetComponent<CircleCollider2D>().enabled = true;//当たり判定
-        gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
+    
 
     }
 
@@ -78,7 +78,7 @@ public class Enemy_Core : MonoBehaviour
             }
             count++;
         }
-        if (HpSlider.value < 1000 && HpSwith900 == true)
+      /*  if (HpSlider.value < 1000 && HpSwith900 == true)
         {
             Debug.Log("1000HP");
             baramakikougeki = true;
@@ -89,7 +89,7 @@ public class Enemy_Core : MonoBehaviour
          
             baramakikougeki = false;
      
-        }
+        }*/
 
 
 

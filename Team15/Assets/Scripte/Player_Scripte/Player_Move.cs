@@ -179,7 +179,7 @@ public class Player_Move : MonoBehaviour
                // Tile.GetComponent<SpriteRenderer>().material.color = Color.red;
                 PlayerX_ButtonStop = true;
                 PlayerMoveStopTime = 0;              
-              //  Debug.Log("切り替えできる");
+                //Debug.Log("切り替えできる");
             }
         }
         //下切り替え常時発動条件付きのboolのやつ

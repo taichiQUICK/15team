@@ -39,7 +39,7 @@ public class Old_Enemy_Core_Bullet1 : MonoBehaviour
         }
         if (baramakicount > 3f)
         {
-            Debug.Log("ばらまきていし");
+            //Debug.Log("ばらまきていし");
             baramakiteisi = false;
             baramakicount = 0;
         }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    int hp = 10;
+    int hp = 30;
     Text textComponent;
 
     // Start is called before the first frame update
