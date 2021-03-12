@@ -25,6 +25,8 @@ public class Player_Move : MonoBehaviour
     public GameObject Tile;
     //クールタイム表示用
     public Text JigennidouUI;
+    public float totalTime;
+    int seconds;
 
     // Start is called before the first frame update
     void Start()
@@ -176,13 +178,20 @@ public class Player_Move : MonoBehaviour
             Tile.SetActive(false);
             // Tile.GetComponent<SpriteRenderer>().material.color = Color.white;
             PlayerMoveStopTime += Time.deltaTime;
+            //クールタイム表示
+            totalTime -= Time.deltaTime;
+            seconds = (int)totalTime;
+            JigennidouUI.text = seconds.ToString();
+
             if (PlayerMoveStopTime > 5f)
             {
                 Tile.SetActive(true);
                // Tile.GetComponent<SpriteRenderer>().material.color = Color.red;
                 PlayerX_ButtonStop = true;
-                PlayerMoveStopTime = 0;              
+                PlayerMoveStopTime = 0;
                 //Debug.Log("切り替えできる");
+                JigennidouUI.text = "次元移動可能";
+
             }
         }
         //下切り替え常時発動条件付きのboolのやつ
@@ -211,8 +220,6 @@ public class Player_Move : MonoBehaviour
             }
         }
 
-        //クールタイム表示（できてない）
-        JigennidouUI.text = PlayerMoveStopTime.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
