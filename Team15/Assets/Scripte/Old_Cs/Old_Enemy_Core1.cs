@@ -215,7 +215,7 @@ public class Old_Enemy_Core1 : MonoBehaviour
                 //  Debug.Log("表になった");
                 Triger = false;
                 GetComponent<CircleCollider2D>().enabled = false;//当たり判定
-                gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 100);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 100);
 
             }
         }
@@ -231,7 +231,7 @@ public class Old_Enemy_Core1 : MonoBehaviour
      void shoki()
     {
             GetComponent<CircleCollider2D>().enabled = false;//当たり判定
-            gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 100);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 100);
             Debug.Log("再読み込み");
 
     }

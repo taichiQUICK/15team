@@ -25,17 +25,21 @@ public class Player_Move : MonoBehaviour
     public GameObject Tile;
     //クールタイム表示用
     public Text JigennidouUI;
-    public float totalTime;
+    private float totalTime;
     int seconds;
 
     // Start is called before the first frame update
     void Start()
     {
+        totalTime = 5.3f;
+
     }
 
     // Update is called once per frame
     void Update()
-    {//各移動処理
+    {
+
+        //各移動処理
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {//低速モード有効
             SlowMode = true;
@@ -180,8 +184,8 @@ public class Player_Move : MonoBehaviour
             PlayerMoveStopTime += Time.deltaTime;
             //クールタイム表示
             totalTime -= Time.deltaTime;
-            seconds = (int)totalTime;
-            JigennidouUI.text = seconds.ToString();
+            //seconds = (int)totalTime;
+            JigennidouUI.text = "" + totalTime.ToString("f2");
 
             if (PlayerMoveStopTime > 5f)
             {
@@ -191,11 +195,13 @@ public class Player_Move : MonoBehaviour
                 PlayerMoveStopTime = 0;
                 //Debug.Log("切り替えできる");
                 JigennidouUI.text = "次元移動可能";
+                totalTime = 5.3f;
 
             }
+
         }
         //下切り替え常時発動条件付きのboolのやつ
-        if(FrontandBack == false && FadeStop == true)
+        if (FrontandBack == false && FadeStop == true)
         {
             Back_Ground.GetComponent<SpriteRenderer>().material.color -= alpha;
             ChangeTime += Time.deltaTime;
