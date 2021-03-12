@@ -97,13 +97,13 @@ public class Player_Move : MonoBehaviour
 
         }
 
-        if ((vert > 0))
+        if ((vert < 0))
         {
             Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(0f, PlayerMove_Plus, 0f);
         }
 
-        if ((vert < 0))
+        if ((vert > 0))
         {
             Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(0f, PlayerMove_Minus, 0f);
@@ -182,7 +182,7 @@ public class Player_Move : MonoBehaviour
         }
 
         //移動処理はここの間まで
-        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Joystick1Button2) && PlayerMoveStop == true && hennkann == false)
+        if ((Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Joystick1Button2)) && PlayerMoveStop == true && hennkann == false)
         {//プレイヤーショット関連
             PlayerShotTime += Time.deltaTime;
             if (0.10f < PlayerShotTime)//0.10の弾幕インターバル
@@ -193,7 +193,8 @@ public class Player_Move : MonoBehaviour
              //   Debug.Log("弾生成");
             }
         }
-        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Joystick1Button2) && PlayerMoveStop == true && hennkann == true)
+       
+        if ((Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Joystick1Button2)) && PlayerMoveStop == true && hennkann == true)
         {//プレイヤーショット関連
             PlayerShotTime += Time.deltaTime;
             if (0.10f < PlayerShotTime)//0.10の弾幕インターバル
@@ -206,7 +207,7 @@ public class Player_Move : MonoBehaviour
         }
         //プレイヤーショット関連はこの間
         //プレイヤーがボタン操作できるギミック等
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Joystick1Button0) && FrontandBack == true && PlayerX_ButtonStop == true)
+        if ((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && FrontandBack == true && PlayerX_ButtonStop == true)
         {
             GameObject BuleSpell = (GameObject)Resources.Load("RedSpell");
             Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
@@ -220,7 +221,7 @@ public class Player_Move : MonoBehaviour
             hennkann = true; //裏表信号
             uragaseikika = false;
         }
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Joystick1Button0) && FrontandBack == false && PlayerX_ButtonStop == true)
+        if ((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && FrontandBack == false && PlayerX_ButtonStop == true)
         {
 
             GameObject BuleSpell = (GameObject)Resources.Load("BlueSpell");
