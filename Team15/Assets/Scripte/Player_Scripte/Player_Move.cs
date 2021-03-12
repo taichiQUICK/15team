@@ -40,6 +40,74 @@ public class Player_Move : MonoBehaviour
     {
 
         //各移動処理
+
+        if (Input.GetKeyDown("joystick button 0"))
+        {
+            Debug.Log("button0");
+        }
+        if (Input.GetKeyDown("joystick button 1"))
+        {
+            Debug.Log("button1");
+        }
+        if (Input.GetKeyDown("joystick button 2"))
+        {
+            Debug.Log("button2");
+        }
+        if (Input.GetKeyDown("joystick button 3"))
+        {
+            Debug.Log("button3");
+        }
+        if (Input.GetKeyDown("joystick button 4"))
+        {
+            Debug.Log("button4");
+        }
+        if (Input.GetKeyDown("joystick button 5"))
+        {
+            Debug.Log("button5");
+        }
+        if (Input.GetKeyDown("joystick button 6"))
+        {
+            Debug.Log("button6");
+        }
+        if (Input.GetKeyDown("joystick button 7"))
+        {
+            Debug.Log("button7");
+        }
+        if (Input.GetKeyDown("joystick button 8"))
+        {
+            Debug.Log("button8");
+        }
+        if (Input.GetKeyDown("joystick button 9"))
+        {
+            Debug.Log("button9");
+        }
+        float hori = Input.GetAxis("Horizontal");
+        float vert = Input.GetAxis("Vertical");
+        if ((hori < 0))
+        {
+            Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(PlayerMove_Minus, 0f, 0f);
+        }
+
+        if ((hori > 0))
+        {
+            Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(PlayerMove_Plus, 0f, 0f);
+
+
+        }
+
+        if ((vert > 0))
+        {
+            Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(0f, PlayerMove_Plus, 0f);
+        }
+
+        if ((vert < 0))
+        {
+            Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(0f, PlayerMove_Minus, 0f);
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {//低速モード有効
             SlowMode = true;
@@ -114,7 +182,7 @@ public class Player_Move : MonoBehaviour
         }
 
         //移動処理はここの間まで
-        if (Input.GetKey(KeyCode.Z) && PlayerMoveStop == true && hennkann == false)
+        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Joystick1Button0) && PlayerMoveStop == true && hennkann == false)
         {//プレイヤーショット関連
             PlayerShotTime += Time.deltaTime;
             if (0.10f < PlayerShotTime)//0.10の弾幕インターバル
@@ -125,7 +193,7 @@ public class Player_Move : MonoBehaviour
              //   Debug.Log("弾生成");
             }
         }
-        if (Input.GetKey(KeyCode.Z) && PlayerMoveStop == true && hennkann == true)
+        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Joystick1Button0) && PlayerMoveStop == true && hennkann == true)
         {//プレイヤーショット関連
             PlayerShotTime += Time.deltaTime;
             if (0.10f < PlayerShotTime)//0.10の弾幕インターバル
@@ -138,7 +206,7 @@ public class Player_Move : MonoBehaviour
         }
         //プレイヤーショット関連はこの間
         //プレイヤーがボタン操作できるギミック等
-        if (Input.GetKeyDown(KeyCode.X) && FrontandBack == true && PlayerX_ButtonStop == true)
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKey(KeyCode.Joystick1Button2) && FrontandBack == true && PlayerX_ButtonStop == true)
         {
             GameObject BuleSpell = (GameObject)Resources.Load("RedSpell");
             Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
@@ -152,7 +220,7 @@ public class Player_Move : MonoBehaviour
             hennkann = true; //裏表信号
             uragaseikika = false;
         }
-        if (Input.GetKeyDown(KeyCode.X) && FrontandBack == false && PlayerX_ButtonStop == true)
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetKey(KeyCode.Joystick1Button2) && FrontandBack == false && PlayerX_ButtonStop == true)
         {
 
             GameObject BuleSpell = (GameObject)Resources.Load("BlueSpell");
