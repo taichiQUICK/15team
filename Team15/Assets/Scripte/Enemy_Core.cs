@@ -22,6 +22,10 @@ public class Enemy_Core : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         HpSlider.value = 1080;
+        Triger = true;
+        //  GetComponent<CircleCollider2D>().enabled = true;//当たり判定
+        gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
+
     }
 
     // Update is called once per frame
