@@ -141,7 +141,8 @@ public class Player_Move : MonoBehaviour
             PlayerMoveStop = false;
             PlayerX_ButtonStop = false;
             // Debug.Log("裏");
-
+            GameObject bari = (GameObject)Resources.Load("baria");
+            Instantiate(bari, this.transform.position, Quaternion.identity);
             hennkann = true; //裏表信号
             uragaseikika = false;
         }
@@ -154,7 +155,9 @@ public class Player_Move : MonoBehaviour
             PlayerMoveStop = false;
             PlayerX_ButtonStop = false;
             FrontandBack = true;
-           // Debug.Log("表");         
+            GameObject bari = (GameObject)Resources.Load("baria");
+            Instantiate(bari, this.transform.position, Quaternion.identity);
+            // Debug.Log("表");         
 
             hennkann = false; // 裏表信号
             uragaseikika = true;
@@ -173,7 +176,7 @@ public class Player_Move : MonoBehaviour
             Tile.SetActive(false);
             // Tile.GetComponent<SpriteRenderer>().material.color = Color.white;
             PlayerMoveStopTime += Time.deltaTime;
-            if (PlayerMoveStopTime > 2f)
+            if (PlayerMoveStopTime > 5f)
             {
                 Tile.SetActive(true);
                // Tile.GetComponent<SpriteRenderer>().material.color = Color.red;

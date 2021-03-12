@@ -36,6 +36,7 @@ public class Old_Enemy_Core1 : MonoBehaviour
         Player = GameObject.Find("Player");
         HpSlider.value = 1080;
         // shoki();
+        Player_Move.hennkann = false; // 裏表信号
         Player_Move.uragaseikika = true;
     }
 
@@ -75,7 +76,7 @@ public class Old_Enemy_Core1 : MonoBehaviour
         {
             LevelOneTriger = false;
             LevelTwo = true;
-            if (1.0f < AutoTime && LevelTwo == true)
+            if (1.0f < AutoTime && Player_Move.hennkann == true && Stels == true && LevelTwo == true)
             {
                 for (int i = 0; i < 16; i++)
                 {//裏面等角攻撃                      

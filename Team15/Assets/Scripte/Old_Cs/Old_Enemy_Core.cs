@@ -32,7 +32,8 @@ public class Old_Enemy_Core : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         HpSlider.value = 1080;
-        Player_Move.hennkann = false;
+        Player_Move.hennkann = true;
+        Player_Move.uragaseikika = false;
     }
 
     // Update is called once per frame
