@@ -14,7 +14,7 @@ public class TitleUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Y) || Input.GetKey(KeyCode.Joystick1Button10))
+        if (Input.GetKey(KeyCode.Y) || Input.GetKeyDown(KeyCode.Joystick1Button6))
         {
             Application.Quit();
         }
@@ -22,11 +22,11 @@ public class TitleUI : MonoBehaviour
         {
             SceneManager.LoadScene("Game_Scene");
         }
-        if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Joystick1Button2))
+        if (Input.GetKey(KeyCode.X) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             SceneManager.LoadScene("Old_GameScene");
         }
-        if (Input.GetKey(KeyCode.T) || Input.GetKey(KeyCode.Joystick1Button3))
+        if (Input.GetKey(KeyCode.T) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             SceneManager.LoadScene("Title_Scene");
         }

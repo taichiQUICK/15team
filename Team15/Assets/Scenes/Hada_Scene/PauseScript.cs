@@ -21,7 +21,7 @@ public class PauseScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKey(KeyCode.Joystick1Button11))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
             if (pauseUIInstance == null)
             {
@@ -38,11 +38,11 @@ public class PauseScript : MonoBehaviour
         //ポーズ中処理
         if (Time.timeScale == 0)
         {
-            if (Input.GetKey(KeyCode.Y) || Input.GetKey(KeyCode.Joystick1Button10))
+            if (Input.GetKey(KeyCode.Y) || Input.GetKey(KeyCode.Joystick1Button6))
             {
                 Application.Quit();
             }
-            if (Input.GetKey(KeyCode.T) || Input.GetKey(KeyCode.Joystick1Button3))
+            if (Input.GetKey(KeyCode.T) || Input.GetKey(KeyCode.Joystick1Button1))
             {
                 SceneManager.LoadScene("TItle_Scene");
             }
