@@ -27,17 +27,33 @@ public class Player_Move : MonoBehaviour
     public Text JigennidouUI;
     private float totalTime;
     int seconds;
+    //スプライト表示切替用
+    SpriteRenderer MainSpriteRenderer;
+    public Sprite spriteBack;
+    public Sprite spriteRight;
+    public Sprite spriteLeft;
+    private bool move;
 
     // Start is called before the first frame update
     void Start()
     {
         totalTime = 5.3f;
-
+        MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        move = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //スプライト表示切替用
+        if (move == false)
+        {
+            MainSpriteRenderer.sprite = spriteBack;
+        }
+        if (Input.GetKeyUp(KeyCode.UpArrow)||Input.GetKeyUp(KeyCode.DownArrow)||Input.GetKeyUp(KeyCode.LeftArrow)|| Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            move = false;
+        }
 
         //各移動処理
 
@@ -87,26 +103,33 @@ public class Player_Move : MonoBehaviour
         {
             Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(PlayerMove_Minus, 0f, 0f);
+            MainSpriteRenderer.sprite = spriteLeft;
+            move = true;
         }
-
         if ((hori > 0))
         {
             Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(PlayerMove_Plus, 0f, 0f);
-
-
+            MainSpriteRenderer.sprite = spriteRight;
+            move = true;
         }
-
         if ((vert < 0))
         {
             Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(0f, PlayerMove_Plus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
         }
-
         if ((vert > 0))
         {
             Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(0f, PlayerMove_Minus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
+        }
+        if(hori==0||vert==0)
+        {
+            move = false;
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {//低速モード有効
@@ -119,35 +142,52 @@ public class Player_Move : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) && SlowMode == true && ScreenLimiteU == true && PlayerMoveStop == true)
         {
             transform.Translate(0f, PlayerSlowMove_Plus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
         }
         if (Input.GetKey(KeyCode.DownArrow) && SlowMode == true && ScreenLimiteD == true && PlayerMoveStop == true)
         {
             transform.Translate(0f, PlayerSlowMove_Minus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
         }
         if (Input.GetKey(KeyCode.LeftArrow) && SlowMode == true && ScreenLimiteL == true && PlayerMoveStop == true)
         {
             transform.Translate(PlayerSlowMove_Minus, 0f, 0f);
+            MainSpriteRenderer.sprite = spriteLeft;
+            move = true;
         }
         if (Input.GetKey(KeyCode.RightArrow) && SlowMode == true && ScreenLimiteR == true && PlayerMoveStop == true)
         {
             transform.Translate(PlayerSlowMove_Plus, 0f, 0f);
+            MainSpriteRenderer.sprite = spriteRight;
+            move = true;
         }
         if (Input.GetKey(KeyCode.UpArrow) && SlowMode == false && ScreenLimiteU == true && PlayerMoveStop == true)
         {
             transform.Translate(0f, PlayerMove_Plus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
         }
         if (Input.GetKey(KeyCode.DownArrow) && SlowMode == false && ScreenLimiteD == true && PlayerMoveStop == true)
         {
             transform.Translate(0f, PlayerMove_Minus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
         }
         if (Input.GetKey(KeyCode.LeftArrow) && SlowMode == false && ScreenLimiteL == true && PlayerMoveStop == true)
         {
             transform.Translate(PlayerMove_Minus, 0f, 0f);
+            MainSpriteRenderer.sprite = spriteLeft;
+            move = true;
         }
         if (Input.GetKey(KeyCode.RightArrow) && SlowMode == false && ScreenLimiteR == true && PlayerMoveStop == true)
         {
             transform.Translate(PlayerMove_Plus, 0f, 0f);
+            MainSpriteRenderer.sprite = spriteRight;
+            move = true;
         }
+
         if (transform.position.x <= -7.85)
         {
             ScreenLimiteL = false;

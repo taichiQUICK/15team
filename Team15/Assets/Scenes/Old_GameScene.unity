@@ -2463,9 +2463,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2610064416872197035, guid: d0d5562e6bd2f384792d0878db32c812,
         type: 3}
+      propertyPath: spriteBack
+      value: 
+      objectReference: {fileID: 21300000, guid: add300b0526b53a43a12cd8d8811a3cc,
+        type: 3}
+    - target: {fileID: 2610064416872197035, guid: d0d5562e6bd2f384792d0878db32c812,
+        type: 3}
+      propertyPath: spriteLeft
+      value: 
+      objectReference: {fileID: 21300000, guid: de2278ba5e551dd408a25db0deb2fa5a,
+        type: 3}
+    - target: {fileID: 2610064416872197035, guid: d0d5562e6bd2f384792d0878db32c812,
+        type: 3}
       propertyPath: Back_Ground
       value: 
       objectReference: {fileID: 373055752}
+    - target: {fileID: 2610064416872197035, guid: d0d5562e6bd2f384792d0878db32c812,
+        type: 3}
+      propertyPath: spriteRight
+      value: 
+      objectReference: {fileID: 21300000, guid: f78e5bd733afbf74e9f0a32505145a4c,
+        type: 3}
     - target: {fileID: 2610064416872197035, guid: d0d5562e6bd2f384792d0878db32c812,
         type: 3}
       propertyPath: JigennidouUI
