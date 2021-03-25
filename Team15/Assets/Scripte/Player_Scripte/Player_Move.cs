@@ -40,6 +40,7 @@ public class Player_Move : MonoBehaviour
         totalTime = 5.3f;
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         move = false;
+        hennkann = false;
     }
 
     // Update is called once per frame

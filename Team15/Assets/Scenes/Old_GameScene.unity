@@ -2035,8 +2035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63c0f8a463a73d4ba9e166065c7a616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseUIPrefab: {fileID: 7186481674399301372, guid: 7cfbdd8321b57e847b84b827aac041f9,
-    type: 3}
 --- !u!1 &1846325373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,6 +2487,16 @@ PrefabInstance:
       propertyPath: JigennidouUI
       value: 
       objectReference: {fileID: 506448467}
+    - target: {fileID: 2610064416872197035, guid: d0d5562e6bd2f384792d0878db32c812,
+        type: 3}
+      propertyPath: PlayerMove_Plus
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610064416872197035, guid: d0d5562e6bd2f384792d0878db32c812,
+        type: 3}
+      propertyPath: PlayerMove_Minus
+      value: -0.015
+      objectReference: {fileID: 0}
     - target: {fileID: 2610064416872197038, guid: d0d5562e6bd2f384792d0878db32c812,
         type: 3}
       propertyPath: m_Name
