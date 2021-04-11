@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3155713327760443220}
   m_Layer: 0
   m_Name: KOKI_R
-  m_TagString: Enemy
+  m_TagString: KOKI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f28c7376495d143a693ef7dcbc7d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 2610064416872197038, guid: d0d5562e6bd2f384792d0878db32c812, type: 3}
   EnemyBullet_Type_1: {fileID: 7846406279542752717, guid: 8fb094fdbaf6b7341af1c7cab860572e,
     type: 3}
   EnemyBullet_Type_2: {fileID: 7846406279542752717, guid: 8fb094fdbaf6b7341af1c7cab860572e,

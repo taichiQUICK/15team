@@ -11,6 +11,7 @@ TagManager:
   - URA_Player_Bullet
   - EnemyBullet
   - Bari
+  - KOKI
   layers:
   - Default
   - TransparentFX

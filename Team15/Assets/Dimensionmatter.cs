@@ -34,6 +34,7 @@ public class Dimensionmatter : MonoBehaviour
 
     float faze3ShotSpeed = 6.5f;
     float faze3Rate = 0.5f;
+    float faze8Rate = 2f;
 
     float timeA = 0f;
     float timeB = 0f;
@@ -42,6 +43,8 @@ public class Dimensionmatter : MonoBehaviour
     float timeE = 0f;
     float fase6Time = 0f;
     float fase7Time = 0f;
+    float timeG = 0f;
+
 
     float GameBossTime = 0f;
 
@@ -52,6 +55,7 @@ public class Dimensionmatter : MonoBehaviour
     bool Triger4 = true;
     bool Triger5 = true;
     bool Triger6 = true;
+    bool Triger7 = true;
 
     bool faze1 = true;
     bool faze2 = false;
@@ -60,6 +64,7 @@ public class Dimensionmatter : MonoBehaviour
     bool faze5 = false;
     bool faze6 = false;
     bool faze7 = false;
+    bool faze8 = true;
 
     bool faze5Triger = true;
     bool faze5Triger2 = true;
@@ -72,7 +77,7 @@ public class Dimensionmatter : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("Player");
-        HpSlider.value = 1080;
+        HpSlider.value = 1620;
         Player_Move.hennkann = false;
         Player_Move.uragaseikika = false;
         Dimensionmatter_sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -103,10 +108,11 @@ public class Dimensionmatter : MonoBehaviour
         {
             faze7 = false;
             Triger6 = false;
+            faze8 = true;
         }
         if (GameBossTime >= 30f && Triger6 == true)
         {
-            Triger = false;
+            Triger5 = false;
             faze6 = false;
             faze7 = true;
         }
@@ -334,7 +340,7 @@ public class Dimensionmatter : MonoBehaviour
         if (faze6 == true)
         {
             fase6Time += Time.deltaTime;
-            this.transform.DOMove(new Vector3(-6f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+            this.transform.DOMove(new Vector3(-5.6f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
             if (1f < fase6Time)
             {
                 float ShotSpeed = 6f;//弾速初速
@@ -406,6 +412,28 @@ public class Dimensionmatter : MonoBehaviour
                 GameObject prefab = (GameObject)Resources.Load("KOKI_R");
                 GameObject KOKI_R = Instantiate(prefab, this.transform.position, Quaternion.identity);
                 faze7Trgier3 = false;
+            }
+        }
+        if(faze8 == true)
+        {
+            timeG += Time.deltaTime;
+            if (faze8Rate < timeG)
+            {
+                for (int i = 0; i < 24; i++)
+                {//裏面等角攻撃
+                 // AutoTime = 0f;
+                    timeG = 0f;
+                    float ShotSpeed = 8;
+                    Vector2 vec = Player.transform.position - transform.position;
+                    vec.Normalize();
+                    vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
+                    vec *= ShotSpeed;
+                    GameObject prefab = (GameObject)Resources.Load("STOP_Bullet_Obj");
+                    GameObject STOP_Bullet_Obj = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    STOP_Bullet_Obj.GetComponent<Rigidbody2D>().velocity = vec;
+
+                }
+                count++;
             }
         }
 

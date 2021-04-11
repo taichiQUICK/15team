@@ -26,7 +26,7 @@ public class Enemy_Core : MonoBehaviour
         Player = GameObject.Find("Player");
         //    HpSlider.value = 1080;
         KOKI_HP = 30;
-        Player_Move.hennkann = false;
+     //  Player_Move.hennkann = false;
         //  GetComponent<CircleCollider2D>().enabled = true;//当たり判定
     
 
