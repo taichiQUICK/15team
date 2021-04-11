@@ -14,6 +14,7 @@ public class STOP_bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Time1 += Time.deltaTime;
         //ハダ_Pause用、Time.timeScaleが0のとき返す
         if (Mathf.Approximately(Time.timeScale, 0f))
         {
@@ -27,11 +28,13 @@ public class STOP_bullet : MonoBehaviour
         {
             v = v.normalized * 0.01f;
            // transform.Translate(0f, -0.002f, 0f);
-          
-            
-
         }
         GetComponent<Rigidbody2D>().velocity = v;
+
+        if(5 < Time1)
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

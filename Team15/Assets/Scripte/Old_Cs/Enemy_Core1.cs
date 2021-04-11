@@ -9,7 +9,7 @@ public class Enemy_Core1 : MonoBehaviour
     public static bool baramakikougeki = false;
     public GameObject Player;
     public GameObject EnemyBullet_Type_1;
-    public  GameObject EnemyBullet_Type_2;
+   
     private float AutoTime = 0f;
     bool Triger = true;
     bool HpSwith900 = true;//ばらまきだん発生条件
@@ -17,7 +17,8 @@ public class Enemy_Core1 : MonoBehaviour
     //  public Slider HpSlider;
    public float KOKI_HP = 30;
 
-
+    float shotspeed = 2f;
+    float rate = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,16 +42,16 @@ public class Enemy_Core1 : MonoBehaviour
             return;
         }
         AutoTime += Time.deltaTime;
-        if (2.0f < AutoTime)
+        if (rate < AutoTime)
         {
             for (int i = 0; i < 24; i++)
             {//表面等角攻撃
                 AutoTime = 0f;
-                float ShotSpeed = 4f;
+               // float ShotSpeed = 4f;
                 Vector2 vec = Player.transform.position - transform.position;
                 vec.Normalize();
                 vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
-                vec *= ShotSpeed;
+                vec *= shotspeed;
                 var t = Instantiate(EnemyBullet_Type_1, transform.position, EnemyBullet_Type_1.transform.rotation);
                 t.GetComponent<Rigidbody2D>().velocity = vec;
             }
@@ -62,8 +63,20 @@ public class Enemy_Core1 : MonoBehaviour
             //  SceneManager.LoadScene("Gameover");
             Destroy(this.gameObject);
         }
-
-
+        if (Dimensionmatter.faze10move == true)
+        {
+           // this.transform.DOMove(new Vector3(-6, -3f, 0f), 5f).SetEase(Ease.Unset);
+        }
+        if(Player_Move.hennkann == true)
+        {
+            shotspeed = 4f;
+            rate = 2.0f;
+        }
+        if(Player_Move.hennkann == false)
+        {
+            shotspeed = 2f;
+            rate = 3.0f;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -74,6 +87,10 @@ public class Enemy_Core1 : MonoBehaviour
         if (collision.gameObject.tag == "URA_Player_Bullet")
         {
            KOKI_HP-= 2;
+        }
+        if (collision.gameObject.tag == "Bari")
+        {
+            Destroy(this.gameObject);
         }
     }
 }

@@ -16,7 +16,7 @@ public class Second_Deth : MonoBehaviour
     {
 
         DestroyTime += Time.deltaTime;
-        if(DestroyTime > 1.1f)
+        if(DestroyTime > 0.81f)
         {
             Destroy(gameObject);
 
