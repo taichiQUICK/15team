@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2610064416872197038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7, y: -2.513, z: 0}
+  m_LocalPosition: {x: -3.721, y: -2.513, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 31}
   m_Children: []
   m_Father: {fileID: 0}
@@ -140,3 +140,7 @@ MonoBehaviour:
   StopCoolTime: 1
   Back_Ground: {fileID: 0}
   Tile: {fileID: 0}
+  JigennidouUI: {fileID: 0}
+  spriteBack: {fileID: 0}
+  spriteRight: {fileID: 0}
+  spriteLeft: {fileID: 0}

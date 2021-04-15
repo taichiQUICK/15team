@@ -9,7 +9,8 @@ public class Enemy_Core3 : MonoBehaviour
     public static bool baramakikougeki = false;
     public GameObject Player;
     public GameObject EnemyBullet_Type_1;
-   
+    public GameObject EnemyBullet_Type_2;
+
     private float AutoTime = 0f;
     bool Triger = true;
     bool HpSwith900 = true;//ばらまきだん発生条件
@@ -18,12 +19,12 @@ public class Enemy_Core3 : MonoBehaviour
    public float KOKI_HP = 30;
     float shotspeed = 2f;
     float rate = 3.0f;
-
+    float timeA = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.DOMove(new Vector3(-0f, -3f, 0f), 5f).SetEase(Ease.Unset);
+        this.transform.DOMove(new Vector3(-0f, 1.3f, 0f), 5f).SetEase(Ease.Unset);
         // this.transform.DOMove(new Vector3(-6f, 3f, 0f), 5f).SetEase(Ease.OutQuad);
         Player = GameObject.Find("Player");
         //    HpSlider.value = 1080;
@@ -65,13 +66,26 @@ public class Enemy_Core3 : MonoBehaviour
         }
         if (Player_Move.hennkann == true)
         {
-            shotspeed = 4f;
-            rate = 2.0f;
+            shotspeed = 2f;
+            rate = 4.0f;
+
         }
         if (Player_Move.hennkann == false)
         {
-            shotspeed = 2f;
+            shotspeed = 4f;
             rate = 3.0f;
+            timeA += Time.deltaTime;
+            if (3f < timeA)
+            {
+                float ShotSpeed = 6f;//弾速初速
+                var pos = this.gameObject.transform.position;
+                var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
+                Vector2 vec = Player.transform.position - pos;
+                vec.Normalize();
+                vec *= ShotSpeed;
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+                timeA = 0f;
+            }
         }
 
     }

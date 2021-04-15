@@ -48,9 +48,17 @@ public class Dimensionmatter : MonoBehaviour
     float timeG = 0f;
     float timeH = 0f;
     float TimeI = 0f;
+    float timeJ = 0f;
+    float timeK = 0f;
+    float timeL = 0f;
+    float timeN = 0f;
+    float timeP = 0f;
+
+    float DOTtimer1 = 0f;
 
     float GameBossTime = 0f;
     float ShotSpeedTTT = 4f;
+
 
     bool Triger1 = true;
     bool Triger2 = true;
@@ -62,6 +70,12 @@ public class Dimensionmatter : MonoBehaviour
     bool Triger8 = true;
     bool Triger9 = true;
     bool Triger10 = true;
+    bool Triger11 = true;
+    bool Triger12 = true;
+    bool Triger13 = true;
+    bool Triger14 = true;
+    bool Triger15 = true;
+
 
     bool faze1 = true;
     bool faze2 = false;
@@ -73,6 +87,11 @@ public class Dimensionmatter : MonoBehaviour
     bool faze8 = false;
     bool faze9 = false;
     bool faze10 = false;
+    bool faze11 = false;
+    bool faze12 = false;
+    bool faze13 = false;
+    bool faze14 = false;
+    bool faze15 = false;
 
     bool faze5Triger = true;
     bool faze5Triger2 = true;
@@ -82,19 +101,32 @@ public class Dimensionmatter : MonoBehaviour
     bool faze7Trgier3 = true;
     bool faze9Triger = true;
     bool faze10Trifer = true;
+    bool EFTriger = true;
+    bool DOTtriger = true;
+    bool DOTtriger2 = true;
+    bool DOTtriger3 = true;
+    bool DOTtriger4 = true;
+    bool DOTtriger5 = true;
+    bool DOTtriger6 = true;
+    bool DOTtriger7 = true;
+
+
     public static bool faze9move = false;
     public static bool faze10move = false;
+
+     AudioSource audio;
     // static bool Fours Bullet = false
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("Player");
-        HpSlider.value = 1620;
+        HpSlider.value = 1080;
         Player_Move.hennkann = false;
         Player_Move.uragaseikika = false;
         Dimensionmatter_sprite = gameObject.GetComponent<SpriteRenderer>();
         Dimensionmatter_sprite.sprite = Red;
-
+        audio = this.GetComponent<AudioSource>();
+        Invoke("AudioPlay",0);
 
     }
 
@@ -114,15 +146,42 @@ public class Dimensionmatter : MonoBehaviour
         {
             return;
         }
-
+      
         GameBossTime += Time.deltaTime;
-        if (GameBossTime >= 50f)
+        if (GameBossTime >= 90 && Triger14 == true)
+        {
+            Triger13 = false;
+            faze13 = false;
+            HpSlider.value = 0;
+            Debug.Log("時間で倒した");
+            Triger14 = false;
+            //   faze14 = true;
+        }
+        if (GameBossTime >= 75 && Triger13 == true)
+        {
+            Triger12 = false;
+            faze12 = false;
+            faze13 = true;
+        }
+        if (GameBossTime >= 65 && Triger12 == true)
+        {
+            Triger11 = false;
+            faze12 = true;
+            faze11 = false;
+        }
+        if (GameBossTime >= 60 && Triger11 == true)
+        {
+            Triger10 = false;
+            faze11 = true;
+            faze10 = false;
+        }
+        if (GameBossTime >= 50f && Triger10 == true)
         {
             faze9 = false;
             Triger8 = false;
             Triger9 = false;
             faze10 = true;
-          //  Debug.Log("skaaaa");
+            //  Debug.Log("skaaaa");
 
         }
         if (GameBossTime >= 45f && Triger9 == true)
@@ -293,7 +352,12 @@ public class Dimensionmatter : MonoBehaviour
         if (faze4 == true && Triger3 == true)
         {
             timeD += Time.deltaTime;
-            this.transform.DOMove(new Vector3(0f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+          
+            if(DOTtriger2 == true)
+            {
+                this.transform.DOMove(new Vector3(0f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+                DOTtriger2 = false;
+            }
             if (1f < timeD)
             {
                 float ShotSpeed = 6f;//弾速初速
@@ -309,8 +373,12 @@ public class Dimensionmatter : MonoBehaviour
         if (faze5 == true)
         {
             timeE += Time.deltaTime;
-            this.transform.DOMove(new Vector3(-2.8f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
-
+           
+            if (DOTtriger3 == true)
+            {
+                this.transform.DOMove(new Vector3(-2.8f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+                DOTtriger3 = false;
+            }
             if (2f < timeE && faze5Triger == true)
             {
                 {
@@ -371,7 +439,12 @@ public class Dimensionmatter : MonoBehaviour
         if (faze6 == true)
         {
             fase6Time += Time.deltaTime;
-            this.transform.DOMove(new Vector3(-5.6f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+          //  DOTtimer1 += Time.deltaTime;         
+            if(DOTtriger == true)
+            {
+                this.transform.DOMove(new Vector3(-5.6f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+                DOTtriger = false;
+            }
             if (1f < fase6Time)
             {
                 float ShotSpeed = 6f;//弾速初速
@@ -387,7 +460,12 @@ public class Dimensionmatter : MonoBehaviour
         if (faze7 == true)
         {
             fase7Time += Time.deltaTime;
-            this.transform.DOMove(new Vector3(-2.8f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+         
+            if(DOTtriger4 == true)
+            {
+                this.transform.DOMove(new Vector3(-2.8f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
+                DOTtriger4 = false;
+            }
             if (2f < fase7Time && faze7Triger == true)
             {
                 {
@@ -531,7 +609,12 @@ public class Dimensionmatter : MonoBehaviour
         }
         if (faze10 == true)
         {
-            this.transform.DOMove(new Vector3(-2.8f, 3f, 0f), 10f).SetEase(Ease.OutQuad);
+          
+            if(DOTtriger5 == true)
+            {
+                this.transform.DOMove(new Vector3(-2.8f, 3f, 0f), 10f).SetEase(Ease.OutQuad);
+                DOTtriger5 = false;
+            }
             TimeI += Time.deltaTime;
             if (faze10 == true && faze10Trifer == true)
             {
@@ -590,6 +673,168 @@ public class Dimensionmatter : MonoBehaviour
                 }
             }
         }
+        if (faze11 == true)
+        {
+            timeJ += Time.deltaTime;
+            if (faze3Rate < timeJ)
+            {
+                for (int i = 0; i < 24; i++)
+                {//裏面等角攻撃
+                 // AutoTime = 0f;
+
+                    // float ShotSpeed = 7;
+                    Vector2 vec = Player.transform.position - transform.position;
+                    vec.Normalize();
+                    vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
+                    vec *= faze3ShotSpeed;
+                    var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeJ = 0f;
+
+                }
+                count++;
+            }
+        }
+        if (faze12 == true)
+        {
+            timeK += Time.deltaTime;
+            timeL += Time.deltaTime;
+            if (1f < timeK)
+            {
+
+                {
+                    float ShotSpeed = 3f;//弾速初速
+                    var pos = this.gameObject.transform.position;
+                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    Vector2 vec = Trident_.transform.position - pos;
+                    vec.Normalize();
+                    vec *= ShotSpeed;
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeK = 0f;
+                }
+                {
+                    float ShotSpeed = 3f;//弾速初速
+                    var pos = this.gameObject.transform.position;
+                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    Vector2 vec = Trident_L.transform.position - pos;
+                    vec.Normalize();
+                    vec *= ShotSpeed;
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeK = 0f;
+                }
+                {
+                    float ShotSpeed = 3f;//弾速初速
+                    var pos = this.gameObject.transform.position;
+                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    Vector2 vec = Trident_R.transform.position - pos;
+                    vec.Normalize();
+                    vec *= ShotSpeed;
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeK = 0f;
+                }
+                {
+                    float ShotSpeed = 6f;//弾速初速
+                    var pos = this.gameObject.transform.position;
+                    var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
+                    Vector2 vec = Player.transform.position - pos;
+                    vec.Normalize();
+                    vec *= ShotSpeed;
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeK = 0f;
+                }
+                if (0.5f < timeL)
+                {
+                    {
+                        float ShotSpeed = 3f;//弾速初速
+                        var pos = this.gameObject.transform.position;
+                        GameObject prefab = (GameObject)Resources.Load("MniMum 1");
+                        GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                        Vector2 vec = R_D_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= ShotSpeed;
+                        MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeL = 0f;
+                    }
+                    {
+                        float ShotSpeed = 3f;//弾速初速
+                        var pos = this.gameObject.transform.position;
+                        GameObject prefab = (GameObject)Resources.Load("MniMum 1");
+                        GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                        Vector2 vec = L_D_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= ShotSpeed;
+                        MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeL = 0f;
+                    }
+                    {
+                        float ShotSpeed = 3f;//弾速初速
+                        var pos = this.gameObject.transform.position;
+                        GameObject prefab = (GameObject)Resources.Load("MniMum 1");
+                        GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                        Vector2 vec = R_Eria.transform.position - pos;
+                        vec.Normalize();
+                        vec *= ShotSpeed;
+                        MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeL = 0f;
+                    }
+                    {
+                        float ShotSpeed = 3f;//弾速初速
+                        var pos = this.gameObject.transform.position;
+                        GameObject prefab = (GameObject)Resources.Load("MniMum 1");
+                        GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                        Vector2 vec = L_Eria.transform.position - pos;
+                        vec.Normalize();
+                        vec *= ShotSpeed;
+                        MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeL = 0f;
+                    }
+                    {
+                        float ShotSpeed = 6f;//弾速初速
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = Player.transform.position - pos;
+                        vec.Normalize();
+                        vec *= ShotSpeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeL = 0f;
+                    }
+                }
+            }
+        }
+        if (faze13)
+        {
+            timeN += Time.deltaTime;
+            timeP += Time.deltaTime;
+            if (1f < timeN)
+            {
+                for (int i = 0; i < 24; i++)
+                {//裏面等角攻撃
+                 // AutoTime = 0f;
+
+                    float ShotSpeed = 7;
+                    Vector2 vec = Player.transform.position - transform.position;
+                    vec.Normalize();
+                    vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
+                    vec *= ShotSpeed;
+                    var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
+                    t.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeN = 0f;
+
+                }
+                count++;
+            }
+            if (0.5f < timeP)
+            {
+                float ShotSpeed = 6f;//弾速初速
+                var pos = this.gameObject.transform.position;
+                var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
+                Vector2 vec = Player.transform.position - pos;
+                vec.Normalize();
+                vec *= ShotSpeed;
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+                timeP = 0f;
+            }
+        }
 
 
 
@@ -628,8 +873,26 @@ public class Dimensionmatter : MonoBehaviour
         //死亡処理
         if (HpSlider.value == 0)
         {
-            SceneManager.LoadScene("Gameover");
+           if(EFTriger == true)
+            {
+                GameObject AE = (GameObject)Resources.Load("AerialExplode");
+                Instantiate(AE, this.transform.position, Quaternion.identity);
+                EFTriger = false;                
+            }
+          
+            Invoke("GameClear",2);
+
+           
         }
+    }
+    void GameClear()
+    {
+        SceneManager.LoadScene("Gameclear");
+        Destroy(this.gameObject);
+    }
+    void AudioPlay()
+    {
+        audio.Play();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -639,7 +902,7 @@ public class Dimensionmatter : MonoBehaviour
         }
         if (collision.gameObject.tag == "URA_Player_Bullet")
         {
-            HpSlider.value -= 2f;
+            HpSlider.value -= 1f;//裏での自機ダメージ
         }
     }
 }

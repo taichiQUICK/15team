@@ -9,7 +9,8 @@ public class Enemy_Core1 : MonoBehaviour
     public static bool baramakikougeki = false;
     public GameObject Player;
     public GameObject EnemyBullet_Type_1;
-   
+    public GameObject EnemyBullet_Type_2;
+
     private float AutoTime = 0f;
     bool Triger = true;
     bool HpSwith900 = true;//ばらまきだん発生条件
@@ -19,6 +20,7 @@ public class Enemy_Core1 : MonoBehaviour
 
     float shotspeed = 2f;
     float rate = 3.0f;
+    float timeA = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +49,7 @@ public class Enemy_Core1 : MonoBehaviour
             for (int i = 0; i < 24; i++)
             {//表面等角攻撃
                 AutoTime = 0f;
-               // float ShotSpeed = 4f;
+                // float ShotSpeed = 4f;
                 Vector2 vec = Player.transform.position - transform.position;
                 vec.Normalize();
                 vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
@@ -65,17 +67,29 @@ public class Enemy_Core1 : MonoBehaviour
         }
         if (Dimensionmatter.faze10move == true)
         {
-           // this.transform.DOMove(new Vector3(-6, -3f, 0f), 5f).SetEase(Ease.Unset);
+            // this.transform.DOMove(new Vector3(-6, -3f, 0f), 5f).SetEase(Ease.Unset);
         }
-        if(Player_Move.hennkann == true)
+        if (Player_Move.hennkann == true)
         {
+            timeA += Time.deltaTime;
             shotspeed = 4f;
             rate = 2.0f;
-        }
-        if(Player_Move.hennkann == false)
-        {
-            shotspeed = 2f;
-            rate = 3.0f;
+            if (1f < timeA)
+            {
+                float ShotSpeed = 6f;//弾速初速
+                var pos = this.gameObject.transform.position;
+                var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
+                Vector2 vec = Player.transform.position - pos;
+                vec.Normalize();
+                vec *= ShotSpeed;
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+                timeA = 0f;
+            }
+            if (Player_Move.hennkann == false)
+            {
+                shotspeed = 2f;
+                rate = 3.0f;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

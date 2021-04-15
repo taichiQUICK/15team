@@ -136,6 +136,6 @@ MonoBehaviour:
   Player: {fileID: 2610064416872197038, guid: d0d5562e6bd2f384792d0878db32c812, type: 3}
   EnemyBullet_Type_1: {fileID: 7846406279542752717, guid: 8fb094fdbaf6b7341af1c7cab860572e,
     type: 3}
-  EnemyBullet_Type_2: {fileID: 7846406279542752717, guid: 8fb094fdbaf6b7341af1c7cab860572e,
+  EnemyBullet_Type_2: {fileID: 7846406279542752717, guid: 88856749354a70e4db92deacb1e095d8,
     type: 3}
   KOKI_HP: 30

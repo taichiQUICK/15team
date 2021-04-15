@@ -1260,7 +1260,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5C04\u6483\uFF1AZ\n\u79FB\u52D5\uFF1A\u65B9\u5411\u30AD\u30FC\n\u4F4E\u901F\u5316\uFF1AShift\u9577\u62BC\u3057\n\u6B21\u5143\u79FB\u52D5\uFF1AX\n\u4E2D\u65AD\uFF1AEsc"
+  m_Text: "\u5C04\u6483\uFF1AZ\n\u79FB\u52D5\uFF1A\u65B9\u5411\u30AD\u30FC\n\u4F4E\u901F\u5316\uFF1AShift\u9577\u62BC\u3057\n\u6B21\u5143\u79FB\u52D5(\u30DC\u30E0)\uFF1AX\n\u4E2D\u65AD\uFF1AEsc"
 --- !u!222 &1384200290
 CanvasRenderer:
   m_ObjectHideFlags: 0

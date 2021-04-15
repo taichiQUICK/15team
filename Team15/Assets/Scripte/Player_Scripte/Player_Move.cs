@@ -13,10 +13,10 @@ public class Player_Move : MonoBehaviour
     bool FrontandBack = true;//表裏モードの確認
     bool FadeStop = true;private float ChangeTime = 0;bool FadeTriger = true; 
     bool ScreenLimiteR = true; bool ScreenLimiteL = true; bool ScreenLimiteU = true; bool ScreenLimiteD = true;//画面限界値
-    public float PlayerMove_Plus = 0.01f;//仮では0.025　通常移動速度
-    public float PlayerMove_Minus = -0.01f;//仮では-0.025 通常移動速度
-    public float PlayerSlowMove_Plus = -0.0025f;//0.008 低速時の移動速度
-    public float PlayerSlowMove_Minus = -0.0025f;//-0.08 低速時の移動速度
+    public float PlayerMove_Plus = 1;//仮では0.025　通常移動速度
+    public float PlayerMove_Minus = -1;//仮では-0.025 通常移動速度
+    public float PlayerSlowMove_Plus = 0.25f;//0.008 低速時の移動速度
+    public float PlayerSlowMove_Minus = -0.25f;//-0.08 低速時の移動速度
     private float PlayerShotTime = 0f;//プレイヤーショットインターバル初期化
     private float PlayerMoveStopTime = 0f;//プレイヤーが操作不能になる時間
     private Color alpha = new Color(0, 0, 0, 0.01f);
@@ -34,6 +34,7 @@ public class Player_Move : MonoBehaviour
     public Sprite spriteLeft;
     private bool move;
 
+    bool ZIKITriger = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,7 @@ public class Player_Move : MonoBehaviour
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         move = false;
         hennkann = false;
+     //  Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -55,7 +57,11 @@ public class Player_Move : MonoBehaviour
         {
             move = false;
         }
-
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+        //    GameObject BuleSpell = (GameObject)Resources.Load("BladeStorm");
+        //    Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
+        }
         //各移動処理
 
         if (Input.GetKeyDown("joystick button 0"))
@@ -337,13 +343,23 @@ public class Player_Move : MonoBehaviour
         }
 
     }
-
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "KOKI" || collision.gameObject.tag == "Enemy" && ZIKITriger == true)
         {
+            GameObject BuleSpell = (GameObject)Resources.Load("BladeStorm");
+            Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
+            GameObject zikibari = (GameObject)Resources.Load("ZIKI_BARI");
+            Instantiate(zikibari, this.transform.position, Quaternion.identity);
             GameObject.Find("PlayerHP").GetComponent<PlayerHP>().AddScore();
+            ZIKITriger = false;
+            Invoke("ZIKIKAIHUKU", 2);
         }
+    }
+    void ZIKIKAIHUKU()
+    {
+        ZIKITriger = true;
     }
 
 }

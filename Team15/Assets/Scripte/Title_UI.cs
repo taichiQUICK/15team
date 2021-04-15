@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
 
 public class Title_UI : MonoBehaviour
 {
     // Start is called before the first frame update
+   
     void Start()
     {
         
+
     }
 
     // Update is called once per frame
@@ -18,18 +23,22 @@ public class Title_UI : MonoBehaviour
         {
             Application.Quit();
         }
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            SceneManager.LoadScene("Game_Scene");
+            SceneManager.LoadScene("BOSS_One");
+            Debug.Log("ボス１ シーン移行");
         }
-        if (Input.GetKey(KeyCode.X) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+        if (Input.GetKey(KeyCode.C) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            SceneManager.LoadScene("Old_GameScene");
+            SceneManager.LoadScene("PRACTIS");
         }
         if (Input.GetKey(KeyCode.T) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             SceneManager.LoadScene("Title_Scene");
         }
-
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+           
+        }
     }
 }
