@@ -22,9 +22,9 @@ public class Auto_Bullet : MonoBehaviour
 
         var v = GetComponent<Rigidbody2D>().velocity;
         v = 0.998f * v;
-        if (v.magnitude < 1.4f)
+        if (v.magnitude < 0.5f)
         {
-            v = v.normalized * 1.4f;
+            v = v.normalized * 0.5f;
 
         }
         GetComponent<Rigidbody2D>().velocity = v;

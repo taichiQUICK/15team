@@ -11,7 +11,7 @@ public class Player_Move : MonoBehaviour
     bool PlayerMoveStop = true;//プレイヤーを一時的に止める
     bool SlowMode = false;//低速モードの有無
     bool FrontandBack = true;//表裏モードの確認
-    bool FadeStop = true;private float ChangeTime = 0;bool FadeTriger = true; 
+    bool FadeStop = true; private float ChangeTime = 0; bool FadeTriger = true;
     bool ScreenLimiteR = true; bool ScreenLimiteL = true; bool ScreenLimiteU = true; bool ScreenLimiteD = true;//画面限界値
     public float PlayerMove_Plus = 1;//仮では0.025　通常移動速度
     public float PlayerMove_Minus = -1;//仮では-0.025 通常移動速度
@@ -42,7 +42,7 @@ public class Player_Move : MonoBehaviour
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         move = false;
         hennkann = false;
-     //  Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -53,14 +53,14 @@ public class Player_Move : MonoBehaviour
         {
             MainSpriteRenderer.sprite = spriteBack;
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow)||Input.GetKeyUp(KeyCode.DownArrow)||Input.GetKeyUp(KeyCode.LeftArrow)|| Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         {
             move = false;
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-        //    GameObject BuleSpell = (GameObject)Resources.Load("BladeStorm");
-        //    Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
+            //    GameObject BuleSpell = (GameObject)Resources.Load("BladeStorm");
+            //    Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
         }
         //各移動処理
 
@@ -134,7 +134,7 @@ public class Player_Move : MonoBehaviour
             MainSpriteRenderer.sprite = spriteBack;
             move = true;
         }
-        if(hori==0||vert==0)
+        if (hori == 0 || vert == 0)
         {
             move = false;
         }
@@ -237,10 +237,10 @@ public class Player_Move : MonoBehaviour
                 PlayerShotTime = 0f;
                 GameObject Player_Bullet = (GameObject)Resources.Load("Player_Bullet");
                 Instantiate(Player_Bullet, this.transform.position, Quaternion.identity);
-             //   Debug.Log("弾生成");
+                //   Debug.Log("弾生成");
             }
         }
-       
+
         if ((Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Joystick1Button2)) && PlayerMoveStop == true && hennkann == true)
         {//プレイヤーショット関連
             PlayerShotTime += Time.deltaTime;
@@ -258,7 +258,7 @@ public class Player_Move : MonoBehaviour
         {
             GameObject BuleSpell = (GameObject)Resources.Load("RedSpell");
             Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
-         //   Back_Ground.GetComponent<Renderer>().material.color = Color.red;
+            //   Back_Ground.GetComponent<Renderer>().material.color = Color.red;
             FrontandBack = false;//フェードやXボタンでの処理の主なbool
             PlayerMoveStop = false;
             PlayerX_ButtonStop = false;
@@ -273,7 +273,7 @@ public class Player_Move : MonoBehaviour
 
             GameObject BuleSpell = (GameObject)Resources.Load("BlueSpell");
             Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
-           // Back_Ground.GetComponent<Renderer>().material.color = Color.white;
+            // Back_Ground.GetComponent<Renderer>().material.color = Color.white;
             PlayerMoveStop = false;
             PlayerX_ButtonStop = false;
             FrontandBack = true;
@@ -306,7 +306,7 @@ public class Player_Move : MonoBehaviour
             if (PlayerMoveStopTime > 5f)
             {
                 Tile.SetActive(true);
-               // Tile.GetComponent<SpriteRenderer>().material.color = Color.red;
+                // Tile.GetComponent<SpriteRenderer>().material.color = Color.red;
                 PlayerX_ButtonStop = true;
                 PlayerMoveStopTime = 0;
                 //Debug.Log("切り替えできる");
@@ -321,21 +321,21 @@ public class Player_Move : MonoBehaviour
         {
             Back_Ground.GetComponent<SpriteRenderer>().material.color -= alpha;
             ChangeTime += Time.deltaTime;
-            if(ChangeTime > 1f)
+            if (ChangeTime > 1f)
             {
-                
+
                 ChangeTime = 0f;
                 FadeTriger = false;
                 FadeStop = false;
             }
         }
-        if(FrontandBack == true && FadeStop == false)
+        if (FrontandBack == true && FadeStop == false)
         {
             Back_Ground.GetComponent<SpriteRenderer>().material.color += alpha;
             ChangeTime += Time.deltaTime;
-            if(ChangeTime > 1f)
+            if (ChangeTime > 1f)
             {
-               
+
                 ChangeTime = 0f;
                 FadeTriger = true;
                 FadeStop = true;
@@ -343,18 +343,27 @@ public class Player_Move : MonoBehaviour
         }
 
     }
-   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "KOKI" || collision.gameObject.tag == "Enemy" && ZIKITriger == true)
+        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "KOKI" || collision.gameObject.tag == "Enemy")
         {
-            GameObject BuleSpell = (GameObject)Resources.Load("BladeStorm");
-            Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
-            GameObject zikibari = (GameObject)Resources.Load("ZIKI_BARI");
-            Instantiate(zikibari, this.transform.position, Quaternion.identity);
-            GameObject.Find("PlayerHP").GetComponent<PlayerHP>().AddScore();
-            ZIKITriger = false;
-            Invoke("ZIKIKAIHUKU", 2);
+            if (ZIKITriger == true)
+            {
+                GameObject BuleSpell = (GameObject)Resources.Load("BladeStorm");
+                Instantiate(BuleSpell, this.transform.position, Quaternion.identity);
+                GameObject zikibari = (GameObject)Resources.Load("ZIKI_BARI");
+                Instantiate(zikibari, this.transform.position, Quaternion.identity);
+                GameObject.Find("PlayerHP").GetComponent<PlayerHP>().AddScore();
+                Invoke("ZIKIKAIHUKU", 2f);
+              //  Debug.Log("あああああああ");
+                ZIKITriger = false;
+                //  zikibari.transform.parent = transform;
+                //  BuleSpell.transform.parent = transform;
+
+                 
+            }
+
         }
     }
     void ZIKIKAIHUKU()

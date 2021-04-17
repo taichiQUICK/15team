@@ -13,6 +13,8 @@ public class Pause_CS_2 : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
+     
         SceneManager.sceneLoaded += OnSceneLoaded;
         Time.timeScale = 1f;
     }
@@ -24,6 +26,7 @@ public class Pause_CS_2 : MonoBehaviour
         {
             if (pauseUIInstance == null)
             {
+               
                 pauseUIInstance = GameObject.Instantiate(pauseUIPrefab) as GameObject;
                 Time.timeScale = 0f;
             }

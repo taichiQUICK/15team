@@ -9,6 +9,9 @@ public class Dimensionmatter : MonoBehaviour
 {
     public GameObject EnemyBullet_Type_1;
     public GameObject EnemyBullet_Type_2;
+    public GameObject Bigboll_Red;
+    public GameObject EnemyBullet_URABULU;
+    public GameObject Trident_bullet;
     public static bool baramakikougeki = false;
     public GameObject Player;
     public GameObject L_D_Point;
@@ -34,7 +37,7 @@ public class Dimensionmatter : MonoBehaviour
     public Sprite Red;
     public Sprite Blue;
 
-    float faze3ShotSpeed = 6.5f;
+    float faze3ShotSpeed = 6f;
     float faze3Rate = 0.5f;
     float faze8Rate = 2f;
 
@@ -55,6 +58,7 @@ public class Dimensionmatter : MonoBehaviour
     float timeP = 0f;
 
     float DOTtimer1 = 0f;
+    float firstrate = 0.5f;
 
     float GameBossTime = 0f;
     float ShotSpeedTTT = 4f;
@@ -113,8 +117,15 @@ public class Dimensionmatter : MonoBehaviour
 
     public static bool faze9move = false;
     public static bool faze10move = false;
+    public static bool trigertiger = false;
+    public static bool trigertgier2 = false;
+    public static bool trigertrgier3 = false;
+    public static bool trigertrgier4 = false;
 
-     AudioSource audio;
+    public float firstbulletspeed;//3.5f;
+    public float first_delayspeed;
+    public float PopalPulalet;
+    AudioSource audio;
     // static bool Fours Bullet = false
     // Start is called before the first frame update
     void Start()
@@ -123,10 +134,18 @@ public class Dimensionmatter : MonoBehaviour
         HpSlider.value = 1080;
         Player_Move.hennkann = false;
         Player_Move.uragaseikika = false;
+        //faze9move = true;
+        //  faze10move = true;
+        trigertiger = false;
+        trigertgier2 = false;
+        trigertrgier3 = false;
+        trigertrgier4 = false;
+        faze9move = false;
+        faze10move = false;
         Dimensionmatter_sprite = gameObject.GetComponent<SpriteRenderer>();
         Dimensionmatter_sprite.sprite = Red;
         audio = this.GetComponent<AudioSource>();
-        Invoke("AudioPlay",0);
+        Invoke("AudioPlay", 0);
 
     }
 
@@ -144,9 +163,14 @@ public class Dimensionmatter : MonoBehaviour
         //ハダ_Pause用、Time.timeScaleが0のとき返す
         if (Mathf.Approximately(Time.timeScale, 0f))
         {
+            audio.Pause();
             return;
         }
-      
+        else
+        {
+            audio.UnPause();
+        }
+
         GameBossTime += Time.deltaTime;
         if (GameBossTime >= 90 && Triger14 == true)
         {
@@ -248,47 +272,105 @@ public class Dimensionmatter : MonoBehaviour
         if (faze1 == true)
         {
             timeB += Time.deltaTime;
-            if (0.5f < timeB)
+            if (firstrate < timeB)
             {
                 {
-                    float ShotSpeed = 5f;//弾速初速
-                    var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
-                    Vector2 vec = R_D_Point.transform.position - pos;
-                    vec.Normalize();
-                    vec *= ShotSpeed;
-                    t.GetComponent<Rigidbody2D>().velocity = vec;
-                    timeB = 0f;
+                    if (Player_Move.hennkann == false)
+                    {
+                        //float ShotSpeed = 1f;//弾速初速
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = R_D_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= firstbulletspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
                 }
                 {
-                    float ShotSpeed = 5f;//弾速初速
-                    var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
-                    Vector2 vec = L_D_Point.transform.position - pos;
-                    vec.Normalize();
-                    vec *= ShotSpeed;
-                    t.GetComponent<Rigidbody2D>().velocity = vec;
-                    timeB = 0f;
+                    if (Player_Move.hennkann == false)
+                    {
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = L_D_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= firstbulletspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
                 }
                 {
-                    float ShotSpeed = 5f;//弾速初速
-                    var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
-                    Vector2 vec = L_U_Point.transform.position - pos;
-                    vec.Normalize();
-                    vec *= ShotSpeed;
-                    t.GetComponent<Rigidbody2D>().velocity = vec;
-                    timeB = 0f;
+                    if (Player_Move.hennkann == false)
+                    {
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = L_U_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= firstbulletspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
                 }
                 {
-                    float ShotSpeed = 5f;//弾速初速
-                    var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
-                    Vector2 vec = R_U_Point.transform.position - pos;
-                    vec.Normalize();
-                    vec *= ShotSpeed;
-                    t.GetComponent<Rigidbody2D>().velocity = vec;
-                    timeB = 0f;
+                    if (Player_Move.hennkann == false)
+                    {
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = R_U_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= firstbulletspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
+                }
+                {
+                    if (Player_Move.hennkann == true)
+                    {
+                        //float ShotSpeed = 1f;//弾速初速
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_URABULU, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = R_D_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= first_delayspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
+                }
+                {
+                    if (Player_Move.hennkann == true)
+                    {
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_URABULU, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = L_D_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= first_delayspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
+                }
+                {
+                    if (Player_Move.hennkann == true)
+                    {
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_URABULU, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = L_U_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= first_delayspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
+                }
+                {
+                    if (Player_Move.hennkann == true)
+                    {
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(EnemyBullet_URABULU, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = R_U_Point.transform.position - pos;
+                        vec.Normalize();
+                        vec *= first_delayspeed;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeB = 0f;
+                    }
                 }
             }
         }
@@ -299,7 +381,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -309,7 +391,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_L.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -319,7 +401,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_R.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -352,20 +434,31 @@ public class Dimensionmatter : MonoBehaviour
         if (faze4 == true && Triger3 == true)
         {
             timeD += Time.deltaTime;
-          
-            if(DOTtriger2 == true)
+
+            if (DOTtriger2 == true)
             {
                 this.transform.DOMove(new Vector3(0f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
                 DOTtriger2 = false;
             }
-            if (1f < timeD)
+            if (1f < timeD && Player_Move.hennkann == false)
             {
-                float ShotSpeed = 6f;//弾速初速
+                // float ShotSpeed = 4f;//弾速初速
                 var pos = this.gameObject.transform.position;
                 var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
                 Vector2 vec = Player.transform.position - pos;
                 vec.Normalize();
-                vec *= ShotSpeed;
+                vec *= PopalPulalet;
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+                timeD = 0f;
+            }
+            if (1f < timeD && Player_Move.hennkann == true)
+            {
+                // float ShotSpeed = 4f;//弾速初速
+                var pos = this.gameObject.transform.position;
+                var t = Instantiate(Bigboll_Red, this.transform.position, Quaternion.identity) as GameObject;
+                Vector2 vec = Player.transform.position - pos;
+                vec.Normalize();
+                vec *= PopalPulalet;
                 t.GetComponent<Rigidbody2D>().velocity = vec;
                 timeD = 0f;
             }
@@ -373,7 +466,7 @@ public class Dimensionmatter : MonoBehaviour
         if (faze5 == true)
         {
             timeE += Time.deltaTime;
-           
+
             if (DOTtriger3 == true)
             {
                 this.transform.DOMove(new Vector3(-2.8f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
@@ -384,7 +477,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -394,7 +487,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_L.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -404,7 +497,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_R.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -418,11 +511,11 @@ public class Dimensionmatter : MonoBehaviour
                 {//裏面等角攻撃
                  // AutoTime = 0f;
                     timeC = 0f;
-                    float ShotSpeed = 5;
+                    //  float ShotSpeed = 5;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
                     vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
-                    vec *= ShotSpeed;
+                    vec *= faze3ShotSpeed;
                     var t = Instantiate(EnemyBullet_Type_2, transform.position, EnemyBullet_Type_2.transform.rotation);
                     t.GetComponent<Rigidbody2D>().velocity = vec;
                     faze5Triger2 = false;
@@ -439,13 +532,24 @@ public class Dimensionmatter : MonoBehaviour
         if (faze6 == true)
         {
             fase6Time += Time.deltaTime;
-          //  DOTtimer1 += Time.deltaTime;         
-            if(DOTtriger == true)
+            //  DOTtimer1 += Time.deltaTime;         
+            if (DOTtriger == true)
             {
                 this.transform.DOMove(new Vector3(-5.6f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
                 DOTtriger = false;
             }
-            if (1f < fase6Time)
+            if (1f < fase6Time && Player_Move.hennkann == false)
+            {
+                float ShotSpeed = 6f;//弾速初速
+                var pos = this.gameObject.transform.position;
+                var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
+                Vector2 vec = Player.transform.position - pos;
+                vec.Normalize();
+                vec *= ShotSpeed;
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+                fase6Time = 0f;
+            }
+            if (1f < fase6Time && Player_Move.hennkann == true)
             {
                 float ShotSpeed = 6f;//弾速初速
                 var pos = this.gameObject.transform.position;
@@ -460,8 +564,8 @@ public class Dimensionmatter : MonoBehaviour
         if (faze7 == true)
         {
             fase7Time += Time.deltaTime;
-         
-            if(DOTtriger4 == true)
+
+            if (DOTtriger4 == true)
             {
                 this.transform.DOMove(new Vector3(-2.8f, 1.5f, 0f), 5f).SetEase(Ease.OutSine);
                 DOTtriger4 = false;
@@ -471,7 +575,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -481,7 +585,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_L.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -491,7 +595,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_R.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -526,14 +630,14 @@ public class Dimensionmatter : MonoBehaviour
         if (faze8 == true)
         {
             timeG += Time.deltaTime;
-            if (faze8Rate < timeG)
+            if (faze8Rate < timeG && Player_Move.hennkann == true)
             {
-                ShotSpeedTTT += 1f;
+                // ShotSpeedTTT += 1f;
                 for (int i = 0; i < 24; i++)
                 {//裏面等角攻撃
                  // AutoTime = 0f;
                     timeG = 0f;
-                    //float ShotSpeedTTT = 7f;
+                    float ShotSpeedTTT = 4f;
                     Vector2 vec = Player.transform.position - transform.position;
                     vec.Normalize();
                     vec = Quaternion.Euler(0, 0, (360 / 24) * i) * vec;
@@ -545,10 +649,7 @@ public class Dimensionmatter : MonoBehaviour
                 }
                 count++;
             }
-            if (ShotSpeedTTT == 8)
-            {
-                ShotSpeedTTT = 4;
-            }
+
         }
         if (faze9 == true)
         {
@@ -557,51 +658,93 @@ public class Dimensionmatter : MonoBehaviour
             if (faze9 == true && faze9Triger == true)
             {
                 faze9move = true;
+                trigertiger = true;
+                trigertrgier3 = true;
+               // trigertgier2 = true;
                 faze9Triger = false;
             }
-            if (0.5f < timeH)
+            if (0.5f < timeH && Player_Move.hennkann == false)
             {
                 {
-                    float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = R_D_Point.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     timeH = 0f;
                 }
                 {
-                    float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = L_D_Point.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     timeH = 0f;
                 }
                 {
-                    float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = R_Eria.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     timeH = 0f;
                 }
                 {
-                    float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = L_Eria.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeH = 0f;
+                }
+            }
+            if (0.5f < timeH && Player_Move.hennkann == true)
+            {
+                {
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = R_D_Point.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeH = 0f;
+                }
+                {
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = L_D_Point.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeH = 0f;
+                }
+                {
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = R_Eria.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    timeH = 0f;
+                }
+                {
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = L_Eria.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     timeH = 0f;
                 }
@@ -609,8 +752,8 @@ public class Dimensionmatter : MonoBehaviour
         }
         if (faze10 == true)
         {
-          
-            if(DOTtriger5 == true)
+
+            if (DOTtriger5 == true)
             {
                 this.transform.DOMove(new Vector3(-2.8f, 3f, 0f), 10f).SetEase(Ease.OutQuad);
                 DOTtriger5 = false;
@@ -619,55 +762,97 @@ public class Dimensionmatter : MonoBehaviour
             if (faze10 == true && faze10Trifer == true)
             {
                 faze10move = true;
+                trigertrgier4 = true;
+                trigertgier2 = true;
                 GameObject prefab = (GameObject)Resources.Load("KOKI_L1");
                 GameObject KOKI_L = Instantiate(prefab, this.transform.position, Quaternion.identity);
                 GameObject prefab1 = (GameObject)Resources.Load("KOKI_R1");
                 GameObject KOKI_R = Instantiate(prefab1, this.transform.position, Quaternion.identity);
+
                 faze10Trifer = false;
             }
-            if (0.5f < TimeI)
+            if (0.5f < TimeI && Player_Move.hennkann == false)
             {
                 {
-                    float ShotSpeed = 3f;//弾速初速
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = R_D_Point.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    TimeI = 0f;
+                }
+                {
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = L_D_Point.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    TimeI = 0f;
+                }
+                {
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = R_Eria.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    TimeI = 0f;
+                }
+                {
+                    var pos = this.gameObject.transform.position;
+                    GameObject prefab = (GameObject)Resources.Load("MniMum_bule");
+                    GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
+                    Vector2 vec = L_Eria.transform.position - pos;
+                    vec.Normalize();
+                    vec *= firstbulletspeed;
+                    MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
+                    TimeI = 0f;
+                }
+            }
+            if (0.5f < TimeI && Player_Move.hennkann == true)
+            {
+                {
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = R_D_Point.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     TimeI = 0f;
                 }
                 {
-                    float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = L_D_Point.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     TimeI = 0f;
                 }
                 {
-                    float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = R_Eria.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     TimeI = 0f;
                 }
                 {
-                    float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
                     GameObject prefab = (GameObject)Resources.Load("MniMum 1");
                     GameObject MiniMum = Instantiate(prefab, this.transform.position, Quaternion.identity);
                     Vector2 vec = L_Eria.transform.position - pos;
                     vec.Normalize();
-                    vec *= ShotSpeed;
+                    vec *= firstbulletspeed;
                     MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                     TimeI = 0f;
                 }
@@ -705,7 +890,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -715,7 +900,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_L.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -725,7 +910,7 @@ public class Dimensionmatter : MonoBehaviour
                 {
                     float ShotSpeed = 3f;//弾速初速
                     var pos = this.gameObject.transform.position;
-                    var t = Instantiate(EnemyBullet_Type_1, this.transform.position, Quaternion.identity) as GameObject;
+                    var t = Instantiate(Trident_bullet, this.transform.position, Quaternion.identity) as GameObject;
                     Vector2 vec = Trident_R.transform.position - pos;
                     vec.Normalize();
                     vec *= ShotSpeed;
@@ -788,13 +973,23 @@ public class Dimensionmatter : MonoBehaviour
                         MiniMum.GetComponent<Rigidbody2D>().velocity = vec;
                         timeL = 0f;
                     }
+                    if(Player_Move.hennkann == false)
                     {
-                        float ShotSpeed = 6f;//弾速初速
                         var pos = this.gameObject.transform.position;
                         var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
                         Vector2 vec = Player.transform.position - pos;
                         vec.Normalize();
-                        vec *= ShotSpeed;
+                        vec *= PopalPulalet;
+                        t.GetComponent<Rigidbody2D>().velocity = vec;
+                        timeL = 0f;
+                    }
+                    if (Player_Move.hennkann == true)
+                    {
+                        var pos = this.gameObject.transform.position;
+                        var t = Instantiate(Bigboll_Red, this.transform.position, Quaternion.identity) as GameObject;
+                        Vector2 vec = Player.transform.position - pos;
+                        vec.Normalize();
+                        vec *= PopalPulalet;
                         t.GetComponent<Rigidbody2D>().velocity = vec;
                         timeL = 0f;
                     }
@@ -823,14 +1018,23 @@ public class Dimensionmatter : MonoBehaviour
                 }
                 count++;
             }
-            if (0.5f < timeP)
+            if (0.5f < timeP && Player_Move.hennkann == false)
             {
-                float ShotSpeed = 6f;//弾速初速
                 var pos = this.gameObject.transform.position;
                 var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
                 Vector2 vec = Player.transform.position - pos;
                 vec.Normalize();
-                vec *= ShotSpeed;
+                vec *= PopalPulalet;
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+                timeP = 0f;
+            }
+            if (0.5f < timeP && Player_Move.hennkann == true)
+            {
+                var pos = this.gameObject.transform.position;
+                var t = Instantiate(Bigboll_Red, this.transform.position, Quaternion.identity) as GameObject;
+                Vector2 vec = Player.transform.position - pos;
+                vec.Normalize();
+                vec *= PopalPulalet;
                 t.GetComponent<Rigidbody2D>().velocity = vec;
                 timeP = 0f;
             }
@@ -850,60 +1054,67 @@ public class Dimensionmatter : MonoBehaviour
 
 
 
+
         {
-            if (Player_Move.hennkann == true && Triger == true)
+            if (Player_Move.hennkann == true && Triger == true)//裏
             {
+                firstrate = 1.5f;
                 faze3ShotSpeed = 3f;
                 faze3Rate = 1f;
+                PopalPulalet = 2.5f;
                 Stels = true;
                 // Debug.Log("裏になった");
                 Triger = false;
                 Dimensionmatter_sprite.sprite = Blue;
             }
-        }
-        if (Player_Move.hennkann == false && Triger == false)
-        {
-            faze3ShotSpeed = 6.5f;
-            faze3Rate = 0.5f;
-            Stels = false;
-            //  Debug.Log("表になった");
-            Triger = true;
-            Dimensionmatter_sprite.sprite = Red;
-        }
-        //死亡処理
-        if (HpSlider.value == 0)
-        {
-           if(EFTriger == true)
-            {
-                GameObject AE = (GameObject)Resources.Load("AerialExplode");
-                Instantiate(AE, this.transform.position, Quaternion.identity);
-                EFTriger = false;                
-            }
-          
-            Invoke("GameClear",2);
 
-           
+            if (Player_Move.hennkann == false && Triger == false)//表
+            {
+                firstrate = 0.5f;
+                faze3ShotSpeed = 6f;
+                faze3Rate = 0.5f;
+                PopalPulalet = 5;
+                Stels = false;
+                //  Debug.Log("表になった");
+                Triger = true;
+                Dimensionmatter_sprite.sprite = Red;
+            }
+            //死亡処理
+            if (HpSlider.value == 0)
+            {
+                if (EFTriger == true)
+                {
+                    GameObject AE = (GameObject)Resources.Load("AerialExplode");
+                    Instantiate(AE, this.transform.position, Quaternion.identity);
+                    EFTriger = false;
+                }
+
+                Invoke("GameClear", 2);
+
+
+            }
         }
     }
-    void GameClear()
-    {
-        SceneManager.LoadScene("Gameclear");
-        Destroy(this.gameObject);
-    }
-    void AudioPlay()
-    {
-        audio.Play();
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player_Bullet")
+        void GameClear()
         {
-            HpSlider.value -= 1f;
+            SceneManager.LoadScene("Gameclear");
+            Destroy(this.gameObject);
         }
-        if (collision.gameObject.tag == "URA_Player_Bullet")
+        void AudioPlay()
         {
-            HpSlider.value -= 1f;//裏での自機ダメージ
+            audio.Play();
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Player_Bullet")
+            {
+                HpSlider.value -= 1f;
+            }
+            if (collision.gameObject.tag == "URA_Player_Bullet")
+            {
+                HpSlider.value -= 1f;//裏での自機ダメージ
+            }
         }
     }
-}
+
 

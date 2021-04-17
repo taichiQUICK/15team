@@ -77,7 +77,7 @@ public class Enemy_Core3 : MonoBehaviour
             timeA += Time.deltaTime;
             if (3f < timeA)
             {
-                float ShotSpeed = 6f;//弾速初速
+                float ShotSpeed = 3f;//弾速初速
                 var pos = this.gameObject.transform.position;
                 var t = Instantiate(EnemyBullet_Type_2, this.transform.position, Quaternion.identity) as GameObject;
                 Vector2 vec = Player.transform.position - pos;
