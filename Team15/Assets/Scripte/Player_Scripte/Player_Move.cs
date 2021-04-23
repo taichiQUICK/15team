@@ -33,6 +33,7 @@ public class Player_Move : MonoBehaviour
     public Sprite spriteRight;
     public Sprite spriteLeft;
     private bool move;
+    bool sousamukou = true;
 
     bool ZIKITriger = true;
     // Start is called before the first frame update
@@ -66,70 +67,117 @@ public class Player_Move : MonoBehaviour
 
         if (Input.GetKeyDown("joystick button 0"))
         {
-            Debug.Log("button0");
+            //   Debug.Log("button0");
         }
         if (Input.GetKeyDown("joystick button 1"))
         {
-            Debug.Log("button1");
+            //  Debug.Log("button1");
         }
         if (Input.GetKeyDown("joystick button 2"))
         {
-            Debug.Log("button2");
+            // Debug.Log("button2");
         }
         if (Input.GetKeyDown("joystick button 3"))
         {
-            Debug.Log("button3");
+            //  Debug.Log("button3");
         }
-        if (Input.GetKeyDown("joystick button 4"))
+        if (Input.GetKeyDown("joystick button 4"))// L1
         {
-            Debug.Log("button4");
+            //  Debug.Log("button4");
         }
-        if (Input.GetKeyDown("joystick button 5"))
+        if (Input.GetKeyDown("joystick button 5"))//R1
         {
-            Debug.Log("button5");
+            //  Debug.Log("button5");
         }
         if (Input.GetKeyDown("joystick button 6"))
         {
-            Debug.Log("button6");
+            //  Debug.Log("button6");
         }
         if (Input.GetKeyDown("joystick button 7"))
         {
-            Debug.Log("button7");
+            //   Debug.Log("button7");
         }
         if (Input.GetKeyDown("joystick button 8"))
         {
-            Debug.Log("button8");
+            //   Debug.Log("button8");
         }
         if (Input.GetKeyDown("joystick button 9"))
         {
-            Debug.Log("button9");
+            //   Debug.Log("button9");
         }
         float hori = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
-        if ((hori < 0))
+        if (Input.GetKeyDown("joystick button 4"))
         {
-            Debug.Log("stick:" + hori + "," + vert);
+            SlowMode = true;
+            sousamukou = false;
+            //  Debug.Log("AAA");
+        }
+        if (Input.GetKeyUp("joystick button 4"))
+        {
+            SlowMode = false;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {//低速モード有効
+            SlowMode = true;
+            sousamukou = false;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {//低速モード無効
+            SlowMode = false;
+        }
+        if ((hori < 0) && SlowMode == true && ScreenLimiteL == true && PlayerMoveStop == true)
+        {
+            //   Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(PlayerSlowMove_Minus, 0f, 0f);
+            MainSpriteRenderer.sprite = spriteLeft;
+            move = true;
+        }
+        if ((hori > 0) && SlowMode == true && ScreenLimiteR == true && PlayerMoveStop == true)
+        {
+            // Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(PlayerSlowMove_Plus, 0f, 0f);
+            MainSpriteRenderer.sprite = spriteRight;
+            move = true;
+        }
+        if ((vert < 0) && SlowMode == true && ScreenLimiteU == true && PlayerMoveStop == true)
+        {
+            //  Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(0f, PlayerSlowMove_Plus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
+        }
+        if ((vert > 0) && SlowMode == true && ScreenLimiteD == true && PlayerMoveStop == true)
+        {
+            // Debug.Log("stick:" + hori + "," + vert);
+            transform.Translate(0f, PlayerSlowMove_Minus, 0f);
+            MainSpriteRenderer.sprite = spriteBack;
+            move = true;
+        }
+        if ((hori < 0) && SlowMode == false && ScreenLimiteL == true && PlayerMoveStop == true)
+        {
+            //   Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(PlayerMove_Minus, 0f, 0f);
             MainSpriteRenderer.sprite = spriteLeft;
             move = true;
         }
-        if ((hori > 0))
+        if ((hori > 0) && SlowMode == false && ScreenLimiteR == true && PlayerMoveStop == true)
         {
-            Debug.Log("stick:" + hori + "," + vert);
+            // Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(PlayerMove_Plus, 0f, 0f);
             MainSpriteRenderer.sprite = spriteRight;
             move = true;
         }
-        if ((vert < 0))
+        if ((vert < 0) && SlowMode == false && ScreenLimiteU == true && PlayerMoveStop == true)
         {
-            Debug.Log("stick:" + hori + "," + vert);
+            //  Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(0f, PlayerMove_Plus, 0f);
             MainSpriteRenderer.sprite = spriteBack;
             move = true;
         }
-        if ((vert > 0))
+        if ((vert > 0) && SlowMode == false && ScreenLimiteD == true && PlayerMoveStop == true)
         {
-            Debug.Log("stick:" + hori + "," + vert);
+            // Debug.Log("stick:" + hori + "," + vert);
             transform.Translate(0f, PlayerMove_Minus, 0f);
             MainSpriteRenderer.sprite = spriteBack;
             move = true;
@@ -137,14 +185,6 @@ public class Player_Move : MonoBehaviour
         if (hori == 0 || vert == 0)
         {
             move = false;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {//低速モード有効
-            SlowMode = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {//低速モード無効
-            SlowMode = false;
         }
         if (Input.GetKey(KeyCode.UpArrow) && SlowMode == true && ScreenLimiteU == true && PlayerMoveStop == true)
         {
@@ -356,12 +396,12 @@ public class Player_Move : MonoBehaviour
                 Instantiate(zikibari, this.transform.position, Quaternion.identity);
                 GameObject.Find("PlayerHP").GetComponent<PlayerHP>().AddScore();
                 Invoke("ZIKIKAIHUKU", 2f);
-              //  Debug.Log("あああああああ");
+                //  Debug.Log("あああああああ");
                 ZIKITriger = false;
                 //  zikibari.transform.parent = transform;
                 //  BuleSpell.transform.parent = transform;
 
-                 
+
             }
 
         }
