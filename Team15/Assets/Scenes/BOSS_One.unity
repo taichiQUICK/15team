@@ -4297,5 +4297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: baria
       objectReference: {fileID: 0}
+    - target: {fileID: 9202500815693321338, guid: fb4686212b571054db06c350f3bc07d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb4686212b571054db06c350f3bc07d6, type: 3}

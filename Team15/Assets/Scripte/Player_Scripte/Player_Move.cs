@@ -251,7 +251,7 @@ public class Player_Move : MonoBehaviour
         {
             ScreenLimiteR = true;
         }
-        if (transform.position.y >= 4.4)
+        if (transform.position.y >= 4.17)
         {
             ScreenLimiteU = false;
         }
