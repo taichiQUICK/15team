@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BOSS_One.unity
     guid: 9353c209b6c97e14097eee33a88388ad
   - enabled: 1
+    path: Assets/Scenes/BOSS_One 1.unity
+    guid: 5b1b9a243cb45e246926a36475cec9c6
+  - enabled: 1
     path: Assets/Scenes/PRACTIS.unity
     guid: 5da55aa4e9070f3499d3194d4c9f46de
   - enabled: 1
