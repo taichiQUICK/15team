@@ -138,4 +138,4 @@ MonoBehaviour:
     type: 3}
   EnemyBullet_Type_2: {fileID: 7846406279542752717, guid: 20b3f8ed6ac881144bab150204b3efba,
     type: 3}
-  HpSlider: {fileID: 0}
+  KOKI_HP: 30
