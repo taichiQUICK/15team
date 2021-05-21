@@ -163,6 +163,7 @@ public class BOSS_Reisame : MonoBehaviour
         {
             Triger1 = false;
             faze1 = false;
+            AMADARE1 = true;
             faze2 = true;
         }
         if (GameBossTime >= 20f && Triger3 == true)
@@ -170,6 +171,7 @@ public class BOSS_Reisame : MonoBehaviour
             Triger2 = false;
             faze2 = false;
             faze3 = true;
+            AMADARE1 = false;
         }
         if (faze1 == true)
         {
@@ -252,11 +254,11 @@ public class BOSS_Reisame : MonoBehaviour
             var Sequence2 = DOTween.Sequence();
             if (DOTtriger2 == true)
             {
+               
                 Sequence2.Play();
                 Sequence2.Append(this.transform.DOMove(new Vector3(-5, 2, 0), 2f).SetEase(Ease.OutSine));
                 Sequence2.Append(this.transform.DOMove(new Vector3(0, 2, 0), 2f).SetEase(Ease.OutSine));
                 Sequence2.Append(this.transform.DOMove(new Vector3(-2.32f, 0.21f, 0), 2f).SetEase(Ease.OutSine));
-                AMADARE1 = true;
                 DOTtriger2 = false;
             }
             if (Blue_Samidare_Rate < timeB)

@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class AMADARE : MonoBehaviour
 {
-    float timerate;
+    float timerate = 0f;
+    float clitetime = 0f;
+
+    public GameObject AMADARE_1_1;
+    public GameObject ReinBR;
+     bool rateswth;
+    bool triger1 = true;
+    bool triger2 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,16 +21,21 @@ public class AMADARE : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BOSS_Reisame.AMADARE1 == true)
+        if (BOSS_Reisame.AMADARE1 == true )
         {
             timerate += Time.deltaTime;
-            if (0.5f < timerate)//0.10の弾幕インターバル
+            clitetime += Time.deltaTime;
+            if (0.65f < clitetime)
             {
-                timerate = 0f;
-                GameObject Player_Bullet = (GameObject)Resources.Load("Rein_2");
-                Instantiate(Player_Bullet, this.transform.position, Quaternion.identity);
-                //   Debug.Log("弾生成");
+                float ShotSpeed = 2f;//弾速初速
+                var pos = this.gameObject.transform.position;
+                var t = Instantiate(ReinBR, this.transform.position, Quaternion.identity) as GameObject;
+                Vector2 vec = AMADARE_1_1.transform.position - pos;
+                vec.Normalize();
+                vec *= ShotSpeed;
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+                clitetime = 0f;
             }
+        }   
         }
-    }
 }
